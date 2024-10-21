@@ -1,0 +1,56 @@
+<script>
+
+    var sweet = new Array(1,2,3,4,5,6,7,8,9,10,11,12,13);
+    console.log(sweet);
+
+    var arr = [1,"Priyanshi",2,"Foram",3,"Riza"];
+    console.log(arr);
+
+    // LENGTH
+
+    console.log("Array length is "+arr.length);
+
+    // PUSH
+
+    arr.push(4);
+    console.log("After Push = "+arr);
+
+    // POP
+
+    arr.pop();
+    console.log("After Pop = "+arr);
+
+    // SHIFT
+
+    arr.shift();
+    console.log("After Shift = "+arr);
+
+    // UNSHIFT
+
+    arr.unshift(1);
+    console.log("After Unshift = "+arr);
+
+    // SPLICE
+
+    arr.splice(3,1,"Hemanshi");
+    console.log("After Shift = "+arr);
+
+    console.log("After Slice = "+arr.slice(-3,-2));
+    console.log("After Slice = "+arr.slice(2,5));
+    console.log("After Slice = "+arr.slice(-2));
+
+    // LOOP
+
+    for(var i=0; i<arr.length; i++){
+        console.log(arr[i]);
+    }
+
+    // For each loop
+
+    function loop(n){
+        console.log(n);
+    }
+
+    arr.forEach(loop);
+
+</script>

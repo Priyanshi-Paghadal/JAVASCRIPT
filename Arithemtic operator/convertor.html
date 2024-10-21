@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: rgb(179, 217, 219);
+        }
+        .container{
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        h2{
+            font-size: 35px;
+            margin: 50px 0 20px 0;
+            font-weight: 300;
+        }
+        h4{
+            font-size: 20px;
+            font-weight: 200;
+        }
+        input{
+            width: 200px;
+            padding: 15px 10px;
+            margin: 15px 0;
+            outline: none;
+            border: 0;
+            background-color: white;
+            font-size: 20px;
+        }
+        span{
+            padding: 15px 10px;
+            display: inline-block;
+            width: 500px;
+            background-color: white;
+            font-size: 20px;
+        }
+        .btn{
+            margin: 0 30px;
+        }
+    </style>
+</head>
+<body class="container">
+
+    <h2>Find Radius :- </h2>
+
+    <h4>Enter r value : </h4>
+    <input type="text" id="r">
+    <input type="button" onclick="getr()" value="Answer" class="btn">
+    <span id="area">Area of circle</span>
+
+    <!-- $ TO RUPEES -->
+
+    <h2>Find Rupees :-</h2>
+
+    <h4>Enter Dollar : </h4>
+    <input type="text" id="d">
+    <input type="button" onclick="getrupees()" value="Answer" class="btn">
+    <span id="rupees">Rupees : </span>
+
+    <!-- KM TO MEETER -->
+
+    <h2>Find Meeter :-</h2>
+
+    <h4>Enter Km : </h4>
+    <input type="text" id="km">
+    <input type="button" onclick="getm()" value="Answer" class="btn">
+    <span id="meeter">Meeter : </span>
+
+    <!-- C TO F -->
+
+    <h2>Find F :-</h2>
+
+    <h4>Enter C : </h4>
+    <input type="text" id="c">
+    <input type="button" onclick="getf()" value="Answer" class="btn">
+    <span id="f">F : </span>
+
+    <!-- CM TO INCH -->
+
+    <h2>Find Inch :-</h2>
+
+    <h4>Enter Cm : </h4>
+    <input type="text" id="cm">
+    <input type="button" onclick="getinch()" value="Answer" class="btn">
+    <span id="inch">Inch : </span>
+
+    <script>
+        function getr()
+        {
+            var r = parseInt(document.getElementById("r").value);
+            var area = 3.14 * r * r;
+            document.getElementById("area").innerHTML = "Area of circle is : " + area;
+        }
+
+        function getrupees()
+        {
+            var d= parseInt(document.getElementById("d").value);
+            var rupees = d*83.43;
+            document.getElementById("rupees").innerHTML= "Rupess : "+rupees;
+        }
+
+        function getm()
+        {
+            var km = parseInt(document.getElementById("km").value);
+            var m = km*1000;
+            document.getElementById("meeter").innerHTML = "Meeter : "+m;
+        }
+
+        function getf()
+        {
+            var c = parseInt(document.getElementById("c").value);
+            var f = (9/5*c)+32;
+            document.getElementById("f").innerHTML = "F : "+f;
+        }
+
+        function getinch()
+        {
+            var cm = parseInt(document.getElementById("cm").value);
+            var inch = cm/2.54;
+            document.getElementById("inch").innerHTML = "Inch : "+inch;
+        }
+    </script>
+</body>
+</html>

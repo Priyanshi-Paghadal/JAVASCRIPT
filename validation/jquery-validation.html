@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" type="text/css">
+    <style>
+        #check {
+            width: 20px;
+            height: 20px;
+            border-radius: 0 !important;
+        }
+
+        .relative {
+            position: relative;
+        }
+
+        .valid12 {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        tr:not(.relative, :last-child) td input {
+            width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="validation">
+        <table border="1" width="500px" align="center" height="500px" cellspacing="0">
+            <tr>
+                <td>Name : </td>
+                <td> <input type="text" id="name" name="name"></td>
+            </tr>
+            <tr>
+                <td>Email : </td>
+                <td>
+                    <input type="email" id="mail" name="mail">
+                </td>
+            </tr>
+            <tr>
+                <td>Number : </td>
+                <td>
+                    <input type="number" id="num" name="num">
+                </td>
+            </tr>
+            <tr>
+                <td>Password : </td>
+                <td>
+                    <input type="password" id="pass" name="pass">
+                </td>
+            </tr>
+            <tr class="relative">
+                <td>Hobby : </td>
+                <td>
+                    <input name="list" type="checkbox" value="newsletter0">Reading
+                    <input name="list" type="checkbox" value="newsletter1">Writing
+                    <input name="list" type="checkbox" value="newsletter2">Walking
+                </td>
+            </tr>
+            <tr>
+                <td>Submit : </td>
+                <td>
+                    <input type="Submit" value="Submit">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"
+        type="text/javascript"></script>
+
+    <script>
+        $('#validation').validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 3
+                },
+                mail: {
+                    required: true,
+                    email: true
+                },
+                num: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 10
+                },
+                pass: {
+                    required: true,
+                },
+                check: {
+                    required: true,
+                    minchecked: 1,
+                    maxchecked: 1
+                },
+                list: {
+                    required: true,
+                    minlength: 1,
+                    maxlength: 1
+                }
+            },
+            messages: {
+                name: {
+                    required: "<div style='color:red;'> <i class='ri-alert-line'></i> Name is required.. ! </div>",
+                    minlength: "<div style='color:red;'> <i class='ri-alert-line'></i> Minimum 3 charecter required.. ! </div>"
+                },
+                mail: {
+                    required: "<div style='color:red;'> <i class='ri-alert-line'></i> Email is required.. ! </div>",
+                    email: "<div style='color:red;'> <i class='ri-alert-line'></i> Enter valid Email.. ! </div>"
+                },
+                num: {
+                    required: "<div style='color:red;'>  <i class='ri-alert-line'></i> Number is required.. ! </div>",
+                    minlength: "<div style='color:red;'> <i class='ri-alert-line'></i> Minimum length 10 required.. ! </div>",
+                    maxlength: "<div style='color:red;'> <i class='ri-alert-line'></i> Maximum length 10 required.. ! </div>"
+                },
+                pass: {
+                    required: "<div style='color:red;'> <i class='ri-alert-line'></i> Password is required.. ! </div>",
+                },
+                list: {
+                    required: "<div style='color:red;' class='valid12'> <i class='ri-alert-line'></i> Atleast One Hobby is required.. ! </div>",
+                    minlength: "<div style='color:red;' class='valid12'> <i class='ri-alert-line'></i> Minimum 1 Hobby is required.. ! </div>",
+                    maxlength: "<div style='color:red;' class='valid12'> <i class='ri-alert-line'></i> Maximum 1 Hobby is required.. ! </div>"
+                }
+            }
+        });
+
+
+
+    </script>
+</body>
+
+</html>

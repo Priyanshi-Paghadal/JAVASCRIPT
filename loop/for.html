@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td>Enter large Starting Point</td>
+            <td>
+                <input type="text" id="s">
+            </td>
+        </tr>
+        <tr>
+            <td>Enter small Ending Point</td>
+            <td>
+                <input type="text" id="e">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="Click" onclick="run()">
+            </td>
+            <!-- <td id="out"></td> -->
+        </tr>
+    </table>
+    
+    <script>
+        function run() {
+            var s = parseInt(document.getElementById('s').value);
+            var e = parseInt(document.getElementById('e').value);
+            for(var i=s; i<=e; i++) 
+            {
+                document.write(i+"   <br>  ");
+                // document.getElementById('out').innerHTML = s;
+                // s = s-5;
+                console.log(i);
+            }
+        
+    }
+    </script>
+</body>
+</html>

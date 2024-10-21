@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e5e5e5;
+        }
+
+        form {
+            padding: 20px;
+            background-color: white;
+            display: inline-block;
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+        }
+
+        #result {
+            text-align: right;
+            width: 300px;
+            height: 100px;
+            background-color: #e0e0e0;
+            border: none;
+            border-radius: 10px;
+            font-size: 42px;
+            outline: none;
+            padding-right: 5px;
+            font-weight: bold;
+            margin: 0 7px;
+            box-shadow: white 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        }
+
+        input[type="button"],
+        #output,
+        #clearend,
+        #per {
+            border-radius: 10px;
+            width: 60px;
+            margin: 3px 7px 3px 7px;
+            font-weight: bold;
+            height: 56px;
+            background-color: #e0e0e0;
+            border: none;
+            box-shadow: white 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        }
+
+        .fs {
+            font-size: 17px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <form>
+            <input type="text" id="result" placeholder="0" autofocus>
+            <br> <br>
+            <button type="button" value="CE" id="clearend">CE</button>
+            <input type="button" value="C" id="clear">
+            <button type="button" value="%" id="per">%</button>
+            <input type="button" value="/">
+
+            <br> <br>
+
+            <input type="button" value="7">
+            <input type="button" value="8">
+            <input type="button" value="9">
+            <input type="button" value="*" class="fs">
+
+            <br> <br>
+
+            <input type="button" value="4">
+            <input type="button" value="5">
+            <input type="button" value="6">
+            <input type="button" value="-" class="fs">
+
+            <br> <br>
+
+            <input type="button" value="1">
+            <input type="button" value="2">
+            <input type="button" value="3">
+            <input type="button" value="+" class="fs">
+
+            <br> <br>
+
+            <input type="button" value="0">
+            <input type="button" value="00">
+            <input type="button" value="+/-" id="negative">
+            <button type="button" value="=" id="output">=</button>
+        </form>
+
+    </div>
+
+    <script>
+        var btn = document.querySelectorAll('input');
+        var result = document.querySelector('#result');
+        var output = document.querySelector('#output');
+        var clearend = document.querySelector('#clearend');
+        var clear = document.querySelector('#clear');
+        var per = document.querySelector('#per');
+        var negative = document.querySelector('#negative');
+
+        for (var i = 0; i < btn.length; i++) {
+            btn[i].addEventListener('click', function () {
+                lastchar = result.value.slice(-1);
+                if (lastchar == '+' || lastchar == '-' || lastchar == '*' || lastchar == '/' || lastchar == '%') {
+                    if (this.value == '+' || this.value == '-' || this.value == '*' || this.value == '/' || this.value == '%') {
+                        result.value = result.value;
+                    }
+                    else {
+                        result.value += this.value;
+                    }
+                }
+                else {
+                    result.value += this.value;
+                }
+            });
+        };
+
+        output.addEventListener('click', function () {
+            result.value = eval(result.value);
+        });
+
+        clearend.addEventListener('click', function () {
+            var demo = result.value;
+            result.value = demo.slice(0, demo.length - 1);
+            demo = result.value;
+        });
+
+        clear.addEventListener('click', function () {
+            result.value = "";
+        });
+
+        per.addEventListener('click', function () {
+            var abc = result.value;
+            result.value = parseInt(result.value) / 100;
+            abc = result.value;
+        });
+
+        negative.addEventListener('click', function () {
+            result.value = -(parseInt(result.value));
+        });
+
+
+    </script>
+
+</body>
+
+</html>

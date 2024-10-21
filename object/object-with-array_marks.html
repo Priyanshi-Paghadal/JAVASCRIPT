@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        var students = [
+            {
+                Name : 'Priyanshi',
+                Rollno : 1,
+                English : 87,
+                Account : 100,
+                Stat : 99
+            },
+            {
+                Name : 'Urvisha',
+                Rollno : 2,
+                English : 25,
+                Account : 23,
+                Stat : 10
+            },
+            {
+                Name : 'Swati',
+                Rollno : 3,
+                English : 75,
+                Account : 90,
+                Stat : 95
+            }
+        ]
+        console.log(students);
+
+        for(var i = 0; i < students.length; i++)
+        {
+            console.log("Name : "+students[i].Name);
+            console.log("Roll No : "+students[i].Rollno);
+            console.log("English : "+students[i].English);
+            console.log("Account : "+students[i].Account);
+            console.log("Stat : "+students[i].Stat);
+           
+            var total = students[i].English + students[i].Account + students[i].Stat;
+            console.log("Total Marks : "+total);
+            var avg = total/3;
+            console.log("Percentage : "+avg+"%");
+            if(avg >33)
+            {
+                    if(avg > 50)
+                    {
+                        if(avg > 75){
+                            console.log("A Grade");
+                        }
+                        else{
+                            console.log("B Grade");
+                        }
+                    }
+                    else{
+                        console.log("c Grade");
+                    }
+            }
+            else{
+                console.log("Fail");
+            }
+            console.log("----------------------");
+        }
+
+    </script>
+
+</body>
+</html>

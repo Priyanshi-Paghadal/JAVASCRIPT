@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        form {
+            display: flex;
+            justify-content: center !important;
+            background-image: url(./img/bg-corona.jpg);
+            height: 100vh;
+            width: 100%;
+        }
+
+        form select {
+            padding: 10px;
+            font-size: 17px;
+            width: 400px;
+            outline: none;
+        }
+
+        form input[type='button'] {
+            padding: 10px;
+            font-size: 17px;
+            width: 200px;
+            cursor: pointer;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .inner {
+            text-align: center;
+            background-color: #fff;
+            padding: 50px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: rgba(255, 255, 255, 0.70) 0px 3px 8px;
+        }
+
+        .inner h2 {
+            margin-bottom: 25px;
+        }
+
+        .inner h2+p {
+            margin: 10px 0;
+        }
+
+        .inner h2+p+p+p {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="inner">
+        <div>
+            <select id="selectstate">
+                <option value="">--Select State--</option>
+                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                <option value="Assam">Assam</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Chandigarh">Chandigarh</option>
+                <option value="Chhattisgarh">Chhattisgarh</option>
+                <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Goa">Goa</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                <option value="Jharkhand">Jharkhand</option>
+                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                <option value="kerala">Kerala</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Ladakh">Ladakh</option>
+                <option value="Lakshadweep">Lakshadweep</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Meghalaya">Meghalaya</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Mizoram">Mizoram</option>
+                <option value="Nagaland">Nagaland</option>
+                <option value="Odisha">Odisha</option>
+                <option value="Puducherry">Puducherry</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Sikkim">Sikkim</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Tripura">Tripura</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Uttarakhand">Uttarakhand</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="West Bengal">West Bengal</option>
+            </select>
+            <input type="button" onclick="getdata()" value="Click">
+        </div>
+    </form>
+
+    <div id="result"></div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        function getdata() {
+            var state = document.getElementById('selectstate').value;
+            $.ajax({
+                url: 'https://api.rootnet.in/covid19-in/stats/latest',
+                type: 'GET',
+                success: function (data) {
+                    console.log(data);
+                    var stateData = data.data.regional.find(function (region) {
+                        return region.loc === state;
+                    });
+                    if (stateData) {
+                        var data = `<div class='main'><div class='inner'><h2>${state} COVID-19 Information</h2><p>Confirm Case : ${stateData.confirmedCasesIndian}</p><p>Recovered cases: ${stateData.discharged}</p><p>Deaths: ${stateData.deaths}</p></div></div>`;
+
+                        document.getElementById('result').innerHTML = data;
+                    } else {
+                        document.getElementById('result').innerHTML = `<div class='inner'>No data found for ${state}</div>`;
+                    }
+                }
+            })
+        }
+    </script>
+
+</body>
+
+</html>

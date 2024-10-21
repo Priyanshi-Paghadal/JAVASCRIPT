@@ -1,0 +1,19 @@
+<script>
+    // 2) Clouser Function
+
+    // Function global var ko attach karke inner scope k andar output dena
+
+    var a= 10;
+
+    function outer()
+    {
+        var b=20;
+        function inner()
+        {
+            var c=30;
+            return a+b+c;
+        }
+        console.log("Addition is = "+inner());
+    }
+    outer();
+</script>

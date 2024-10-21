@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <table border="1">
+        <tr>
+            <td>Enter Starting Point</td>
+            <td>
+                <input type="text" id="s">
+            </td>
+        </tr>
+        <tr>
+            <td>Enter Ending Point</td>
+            <td>
+                <input type="text" id="e">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="Click" onclick="run()">
+            </td>
+            <!-- <td id="out"></td> -->
+        </tr>
+    </table>
+    <h1 id="out"></h1>
+
+    <script>
+        function run() {
+            var s = parseInt(document.getElementById('s').value);
+            var e = parseInt(document.getElementById('e').value);
+            while(s<=e)
+            {
+                document.write(s+"   <br>  ");
+                // document.getElementById('out').innerHTML = s;
+                s = s+5;
+                console.log(s);
+            }
+        }
+    </script>
+</body>
+</html>

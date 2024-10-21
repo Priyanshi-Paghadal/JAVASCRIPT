@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #adaedd;
+        }
+
+        .inner {
+            width: 300px;
+            height: 200px;
+            /* line-height: 100px; */
+            text-align: center;
+            /* align-items: center; */
+            background-color: #fff;
+            padding: 40px 20px 40px 20px;
+            border-radius: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 50px;
+        }
+
+        button {
+            border: none;
+            background-color: #adaedd;
+            color: #fff;
+            padding: 10px 15px;
+            margin: 0 5px;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- https://www.google.com/search?sca_esv=01e0ca91490887a5&rlz=1C1UEAD_enIN1064IN1064&sxsrf=ADLYWIKC-iwxjKwY_Gv3vluN9HGkE9MdmQ:1718167590780&q=stopwatch+ui&uds=ADvngMhBIBYYlJyAlgv8XZEyQY-Mbavl75nE1XI9Do6ueZxKRanRerk4cYo_bWyCwDHuezmIFvOX9r0fXsU3vDjFQysfbMxVak8ugVBYG34e8gcaM93mDpCJV8koDlNf-xCOKk5oOAKgNDzNwl4DrxQ9aZ632vbmLCZ7eKrLDtAJtMa8cXUR_2xNCBnPasejuTZ354BY4C-iW6Bb-yqBmsWskmnfodiQy2gH-iQZjZIZIXN3rerFGB0N8MGOK5F-cd-MpsHHiszrS8QWYY5g3Ve_ebf40Wwih90abNl-3e1pZvTcbFJw_aacTR62CqreCwln3m_2Q8zT&udm=2&prmd=isvnmbtz&sa=X&ved=2ahUKEwiVxaaHodWGAxXryDgGHV77BO4QtKgLegQIDRAB&biw=1440&bih=739&dpr=1#vhid=qM4gjGg1-hAbZM&vssid=mosaic -->
+
+    <div class="main">
+        <div class="inner">
+            <h1 id="timer">00 : 00 : 00</h1>
+            <button onclick="starttimer()">Start</button>
+            <button onclick="clearInterval(time)">Stop</button>
+            <button onclick="resettimer()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        var timer = document.getElementById('timer');
+        var time;
+
+        function starttimer() {
+            var hours = 0;
+            var minutes = 0;
+            var seconds = 0;
+
+            time = setInterval(function () {
+                var abc = hours + " : " + minutes + " : " + seconds;
+                timer.innerHTML = abc;
+                seconds++;
+                if (seconds == 60) {
+                    minutes++;
+                    seconds = 0;
+                }
+                if (minutes == 60) {
+                    hours++;
+                    minutes = 0;
+                }
+            }, 100);
+        }
+
+        function resettimer() {
+            timer.innerHTML = "00:00:00";
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            display: inline-block;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            background-color: black;
+            padding: 10px 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="login.html">Go To Login Page</a>
+
+    <div id="res"></div>
+
+    <script>
+        function viewData() {
+            var viewdata = localStorage.getItem('user');
+            var view = JSON.parse(viewdata);
+
+            var data = "<table border='1' cellspacing='10' width='700px'><tr align='left'><th>Name </th><th>Last Name </th><th>Email </th><th>Mobile Number</th></tr>";
+
+            for (var i = 0; i < view.length; i++) {
+                data += `<tr>`;
+                data += `<td>${view[i]['name']}</td>`;
+                data += `<td>${view[i]['lastName']}</td>`;
+                data += `<td>${view[i]['email']}</td>`;
+                data += `<td>${view[i]['number']}</td>`;
+                data += `<td><a href="javascript:deleteData(${view[i]['no']})">Delete</a></td>`;
+                data += `<td><a href="javascript:updateData(${view[i]['no']})">Update</a></td>`;
+                data += `</tr>`;
+            }
+            data += `</table>`;
+            document.getElementById('res').innerHTML = data;
+        }
+        viewData();
+
+        function deleteData(no) {
+            var deletedata = localStorage.getItem('user');
+            var dedata = JSON.parse(deletedata);
+            for (var i = 0; i < dedata.length; i++) {
+                if (dedata[i]['no'] == no) {
+                    dedata.splice(i, 1);
+                }
+            }
+            localStorage.setItem('user', JSON.stringify(dedata));
+            viewData();
+        }
+
+        function updateData(no) {
+            var updateData = localStorage.getItem('user');
+            var updata = JSON.parse(updateData);
+            for (var i = 0; i < updata.length; i++) {
+                if (updata[i]['no'] == no) {
+
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>

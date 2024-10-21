@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <table border="1px">
+        <tr>
+            <td>
+                Enter g value
+            </td>
+            <td>
+                <input type="text" id="g">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Enter h value
+            </td>
+            <td>
+                <input type="text" id="h">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="Click" onclick="getres()">
+            </td>
+            <td id="ans"></td>
+        </tr>
+    </table>
+    
+
+    <script>
+
+        function getres()
+        {
+            var g = parseInt(document.getElementById("g").value);
+            var h =parseInt( document.getElementById("h").value);
+            var i=g+h;
+            document.getElementById("ans").innerHTML = i;
+        }
+        var a=10;
+        var b=20;
+        var c=a+b;
+        console.log(a+" + "+b+" = "+c);
+        // var d=parseInt(prompt("Enter d value: "));
+        // var e=parseInt(prompt("Enter e value: "));
+        // var f=d+e;
+        // console.log(d+" + "+e+" = "+f);
+    </script>
+</body>
+</html>

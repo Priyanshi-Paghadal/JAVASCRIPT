@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: cadetblue;
+        }
+
+        .inner {
+            width: 700px;
+            height: 222px;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 6px 6px 20px 5px gainsboro;
+        }
+
+        #ques {
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+
+        span {
+            margin: 0 20px;
+        }
+
+        #start-btn,
+        button {
+            cursor: pointer;
+            border: none;
+            background-color: coral;
+            color: white;
+            padding: 10px 20px;
+            margin: 30px 0 0 0;
+            transition: 0.4s all;
+        }
+
+        button {
+            background-color: goldenrod;
+        }
+
+        #submit {
+            background-color: green;
+        }
+
+        .flex {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #reset {
+            background-color: palevioletred;
+        }
+
+        #start-btn:hover,
+        button:hover {
+            filter: drop-shadow(5px 5px 4px gray);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="inner">
+            <form onsubmit="return validation()">
+                <h2 id="ques">Start Test</h2>
+                <input type="checkbox" id="op-1"><span id="op1"></span>
+                <input type="checkbox" id="op-2"><span id="op2"></span>
+                <input type="checkbox" id="op-3"><span id="op3"></span>
+                <input type="checkbox" id="op-4"><span id="op4"></span>
+                <br>
+                <div class="flex">
+                    <input type="button" value="Start Test" onclick="starttest()" id="start-btn">
+                    <button id="next" onclick="next()">Next Ques.</button>
+                    <button id="reset" onclick="reset()">Reset Ques.</button>
+                    <button id="submit" onclick="submit()" value="Submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        var mcq = [
+            {
+                ques: "Start Test",
+                op1: "A For Very Good",
+                op2: "B For Good",
+                op3: "C For Average",
+                op4: "D For Poor",
+            },
+            {
+                ques: "1.Which type of JavaScript language is ___",
+                op1: "Object-Oriented",
+                op2: "Object-Based",
+                op3: "Assembly-language",
+                op4: "High-level",
+            },
+            {
+                ques: "2. Identify the clustering method which takes care of variance in data",
+                op1: "Desicion Tree",
+                op2: "Desicion Tree",
+                op3: "Desicion Tree",
+                op4: "Desicion Tree",
+            },
+            {
+                ques: "3. Identify the clustering method which takes care of variance in data",
+                op1: "Desicion Tree",
+                op2: "Desicion Tree",
+                op3: "Desicion Tree",
+                op4: "Desicion Tree",
+            },
+            {
+                ques: "4. Identify the clustering method which takes care of variance in data",
+                op1: "Desicion Tree",
+                op2: "Desicion Tree",
+                op3: "Desicion Tree",
+                op4: "Desicion Tree",
+            },
+            {
+                ques: "5. Identify the clustering method which takes care of variance in data",
+                op1: "Desicion Tree",
+                op2: "Desicion Tree",
+                op3: "Desicion Tree",
+                op4: "Desicion Tree",
+            },
+            {
+                ques: "6. Identify the clustering method which takes care of variance in data",
+                op1: "Desicion Tree",
+                op2: "Desicion Tree",
+                op3: "Desicion Tree",
+                op4: "Desicion Tree",
+            },
+            {
+                ques: "7.Which type of JavaScript language is ___",
+                op1: "Object-Oriented",
+                op2: "Object-Based",
+                op3: "Assembly-language",
+                op4: "High-level",
+            },
+            {
+                ques: "8.Which type of JavaScript language is ___",
+                op1: "Object-Oriented",
+                op2: "Object-Based",
+                op3: "Assembly-language",
+                op4: "High-level",
+            },
+            {
+                ques: "9.Which type of JavaScript language is ___",
+                op1: "Object-Oriented",
+                op2: "Object-Based",
+                op3: "Assembly-language",
+                op4: "High-level",
+            },
+            {
+                ques: "10.Which type of JavaScript language is ___",
+                op1: "Object-Oriented",
+                op2: "Object-Based",
+                op3: "Assembly-language",
+                op4: "High-level",
+            },
+        ]
+
+        function validation() {
+            var opt1 = document.getElementById('op-1').checked;
+            var opt2 = document.getElementById('op-2').checked;
+            var opt3 = document.getElementById('op-3').checked;
+            var opt4 = document.getElementById('op-4').checked;
+            if (opt1 == false && opt2 == false && opt3 == false && opt4 == false) {
+                document.getElementById('op1').innerHTML = "<span style='color:red'>Please select 1 option</span>";
+                return false;
+            }
+            else if (opt1 == true || opt2 == true || opt3 == true || opt4 == true) {
+                document.getElementById('op1').innerHTML = "<span style='color:red'>Please select only 1 option</span>";
+                return true;
+            }
+            else {
+                return true;
+            }
+        }
+        var ques = document.getElementById("ques");
+        var op1 = document.getElementById("op1");
+        var op2 = document.getElementById("op2");
+        var op3 = document.getElementById("op3");
+        var op4 = document.getElementById("op4");
+        ques.innerHTML = mcq[0].ques;
+        document.getElementById('op1').innerHTML = mcq[0].op1;
+        document.getElementById('op2').innerHTML = mcq[0].op2;
+        document.getElementById('op3').innerHTML = mcq[0].op3;
+        document.getElementById('op4').innerHTML = mcq[0].op4;
+        var i = 0;
+        var play;
+
+        function next() {
+            i++;
+            ques.innerHTML = mcq[i].ques;
+            document.getElementById('op1').innerHTML = mcq[i].op1;
+            document.getElementById('op2').innerHTML = mcq[i].op2;
+            document.getElementById('op3').innerHTML = mcq[i].op3;
+            document.getElementById('op4').innerHTML = mcq[i].op4;
+
+        }
+
+        function starttest() {
+            play = setInterval(function () {
+
+                ques.innerHTML = mcq[i].ques;
+                document.getElementById('op1').innerHTML = mcq[i].op1;
+                document.getElementById('op2').innerHTML = mcq[i].op2;
+                document.getElementById('op3').innerHTML = mcq[i].op3;
+                document.getElementById('op4').innerHTML = mcq[i].op4;
+                i++;
+            }, 1000);
+
+        }
+
+        function reset() {
+            i = 0;
+        }
+
+        function submit() {
+            if (i == mcq.length) {
+                ques.innerHTML = "Test is Submited Successfully !";
+                document.getElementById('op1').innerHTML = mcq[0].op1;
+                document.getElementById('op2').innerHTML = mcq[0].op2;
+                document.getElementById('op3').innerHTML = mcq[0].op3;
+                document.getElementById('op4').innerHTML = mcq[0].op4;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

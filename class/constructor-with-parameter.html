@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+    class student{
+        constructor(name,rollno,s1,s2,s3){
+            this.name = name;
+            this.rollno = rollno;
+            this.s1 = s1;
+            this.s2 = s2;
+            this.s3 = s3;
+        }
+        get(){
+            console.log("Name = "+this.name);
+            console.log("Roll No = "+this.rollno);
+            console.log("Subject1 marks = "+this.s1);
+            console.log("Subject2 marks = "+this.s2);
+            console.log("Subject3 marks = "+this.s3);
+            console.log("Total Marks = "+(this.s1+this.s2+this.s3))
+            console.log("Average Marks = "+(this.s1+this.s2+this.s3)/3);
+        }
+    };
+    var stu1 = new student("Priyanshi",12,90,97,95);
+    stu1.get();
+    console.log("------------------------");
+    var stu2 = new student("Urvisha",17,70,77,75);
+    stu2.get();
+    console.log("------------------------");
+    var stu3 = new student("Swati",10,80,85,86);
+    stu3.get();
+    console.log("------------------------");
+    var stu4 = new student("Tanvi",20,60,64,55);
+    stu4.get();
+    
+</script> 
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            display: flex;
+            width: 500px;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        .main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .main h1{
+            font-size: 40px;
+            text-align: center;
+        }
+        #todo-input{
+            width: 500px;
+            font-size: 18px;
+            padding: 5px 20px;
+            margin: 50px 0;
+        }
+        #btn{
+            font-size: 17px;
+            padding: 7px 20px;
+            background-color: cadetblue;
+            border: none;
+            cursor: pointer;
+        }
+        .delete{
+            background-color: #333;
+            color: white;
+            padding: 5px 20px;
+            font-size: 16px;
+        }
+        .flex{
+            display: flex;
+            align-items: center;
+        }
+        .flex span{
+            font-size: 18px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div id="todo-app">
+            <h1>My To-Do List</h1>
+            <form id="todo-form">
+                <input type="text" id="todo-input" placeholder="Add a new task...">
+                <input onclick="getData()" type="button" value="add Data" id="btn">
+            </form>
+            <ul id="todo-list">
+            </ul>
+        </div>
+    </div>
+    <script>
+        function getData() {
+            var search = document.getElementById('todo-input').value;
+            document.getElementById('todo-input').value = "";
+            var data = "";
+            data += `<li>`;
+            data += `<span class='flex'>`;
+            data += `<input type='checkbox'/>`;
+            data += `<span>${search}</span>`;
+            data += `</span>`;
+            data += `<input type='button' value='delete' onclick='deleteTask(this)' class='delete'/>`;
+            data += `</li>`;
+            var todoList = document.getElementById('todo-list');
+            todoList.innerHTML += data;
+
+        }
+        function deleteTask(element) {
+            var task = element.parentNode;
+            task.parentNode.removeChild(task);
+        }
+    </script>
+</body>
+
+</html>

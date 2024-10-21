@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1 id="res"></h1>
+
+    <script>
+        
+        var i = 1;
+        var s =10;
+        var j = 100;
+        var k = 5;
+        var record = "";
+        while(i<=s)
+        {
+            record = record + i;
+            record = record + j;
+            record = record + k;
+            i=i+1;
+            j= j-10;
+            k=k+5;
+            document.getElementById("res").innerHTML= record ;
+        }
+    </script>
+</body>
+</html>

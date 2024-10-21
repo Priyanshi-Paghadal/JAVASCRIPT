@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        function add()
+        {
+            var a=parseInt(prompt("Enter a value"));
+            var b=parseInt(prompt("Enter b value"));
+            var ans = a+b;
+            console.log("Addition is = "+ans);
+        }
+        function sub()
+        {
+            var a=parseInt(prompt("Enter a value"));
+            var b=parseInt(prompt("Enter b value"));
+            var ans = a-b;
+            console.log("Substraction is = "+ans);
+        }
+        function multi()
+        {
+            var a=parseInt(prompt("Enter a value"));
+            var b=parseInt(prompt("Enter b value"));
+            var ans = a*b;
+            console.log("Multiplication is = "+ans);
+        }
+        function div()
+        {
+            var a=parseInt(prompt("Enter a value"));
+            var b=parseInt(prompt("Enter b value"));
+            var ans = a/b;
+            console.log("Division is = "+ans);
+        }
+        function reminder()
+        {
+            var a=parseInt(prompt("Enter a value"));
+            var b=parseInt(prompt("Enter b value"));
+            var ans = a%b;
+            console.log("Reminder is = "+ans);
+        }
+
+        var choice = parseInt(prompt("Press 1 for addition Press 2 for subtraction Press 3 for multiplication Press 4 for Division Press 5 for Reminder"));
+        switch (choice)
+        {
+            case 1:
+                add();
+                break;
+            case 2:
+                sub();
+                break;
+            case 3:
+                multi();
+                break;
+            case 4:
+                div();
+                break;
+            case 5:
+                reminder();
+                break;
+            default:
+                console.log("Invalid choice");
+        }
+    </script>
+</body>
+</html>

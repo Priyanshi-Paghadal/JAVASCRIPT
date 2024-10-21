@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url(./img/bg.avif);
+            background-size: cover;
+        }
+
+        .inner {
+            width: 700px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+        }
+
+        input[type='text'] {
+            width: 80%;
+            padding: 6px 20px;
+            font-size: 18px;
+            margin-bottom: 30px;
+            outline: none;
+            border: none;
+        }
+
+        input[type='button'] {
+            width: 19%;
+            padding: 7px 20px;
+            font-size: 18px;
+            background-color: #34C759;
+            border: none;
+            color: white;
+        }
+
+        span {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        input[type='checkbox'] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        a+a {
+            margin-left: 10px;
+            background-color: #FF3737;
+        }
+
+        a {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="inner">
+            <input type="text" id="item" placeholder="Add task">
+            <input type="button" value="Add Task" onclick="addTask()" id="add">
+            <input type="hidden" id="no">
+            <div id="out"></div>
+        </div>
+    </div>
+
+    <script>
+        var tasks = [];
+        function addTask() {
+            if (tasks == null) {
+                tasks = [];
+            }
+            var item = document.getElementById("item").value;
+            var no = document.getElementById('no').value;
+            if (no) {
+                for (var i = 0; i < tasks.length; i++) {
+                    if (tasks[i]['no'] == no) {
+                        tasks[i]['task'] = item;
+                        document.getElementById('add').value = "Add Task";
+                        document.getElementById('no').value = "";
+                    }
+                }
+            }
+            else {
+                var newtask = {
+                    task: item,
+                    no: Math.round(Math.random() * 1000),
+                }
+                tasks.push(newtask);
+            }
+
+            var taskall = JSON.stringify(tasks);
+            localStorage.setItem("task", taskall);
+            viewTask();
+            document.getElementById("item").value = "";
+        }
+        function viewTask() {
+            var view = localStorage.getItem("task");
+            var viewtask = JSON.parse(view);
+
+            var data = "<ul>";
+
+            for (var i = 0; i < viewtask.length; i++) {
+                data += `<li>`;
+                data += `<span>`;
+                data += `<input type='checkbox'/>`;
+                data += `${viewtask[i]['task']}`;
+                data += `</span>`;
+                data += `<span>`;
+                data += `<a href='javascript:editTask(${viewtask[i]['no']})'>Edit Task</a>`;
+                data += `<a href='javascript:deleteTask(${viewtask[i]['no']})'>Remove</a>`;
+                data += `</span>`;
+                data += `</li>`
+            }
+            data += `</ul>`;
+            document.getElementById('out').innerHTML = data;
+        }
+        viewTask();
+
+        function deleteTask(no) {
+            var deletetask = localStorage.getItem("task");
+            var Delete = JSON.parse(deletetask);
+            for (var i = 0; i < Delete.length; i++) {
+                if (Delete[i]['no'] == no) {
+                    Delete.splice(i, 1);
+                }
+            }
+            localStorage.setItem('task', JSON.stringify(Delete));
+            viewTask();
+        }
+        function editTask(no) {
+            var edit = localStorage.getItem("task");
+            var editTask = JSON.parse(edit);
+            for (var i = 0; i < editTask.length; i++) {
+                if (editTask[i]['no'] == no) {
+                    document.getElementById("item").value = editTask[i]['task'];
+                    document.getElementById('no').value = no;
+                    document.getElementById('add').value = "Edit Task";
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

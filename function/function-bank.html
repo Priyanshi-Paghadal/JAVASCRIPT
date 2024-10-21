@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+    
+        function Withdraw()
+        {
+            var balance=parseInt(prompt("Enter Your Balance"));
+            var withdraw=parseInt(prompt("Enter Your withdraw"));
+            var b = balance - withdraw;
+            console.log("After withdraw bank balance is = "+b);
+        }
+        function depo()
+        {
+            var balance=parseInt(prompt("Enter Your Balance"));
+            var deposit=parseInt(prompt("Enter Your deposit"));
+            var b = balance + deposit;
+            console.log("After Deposit bank balance is = "+b);
+        }
+        function balance()
+        {
+            var balance=parseInt(prompt("Enter Your Balance"));
+            console.log("Your bank balance is = "+balance);
+        }
+
+        var choice = parseInt(prompt("Press 1 for Withdraw Press 2 for Deposit Press 3 for See bank balance"));
+        switch (choice)
+        {
+            case 1:
+                Withdraw();
+                break;
+            case 2:
+                depo();
+                break;
+            case 3:
+                balance();
+                break;
+            default:
+                console.log("Invalid choice");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        var choice = parseInt(prompt("Press 1 for addition press 2 for substraction press 3 for multiplication press 4 for dividion press 5 for reminder"));
+        var a = parseInt(prompt("Enter a value"));
+        var b = parseInt(prompt("Enter b value"));
+        switch (choice) {
+            case 1 :
+                ans = a+b;
+                console.log("Addition is = "+ans);
+                break;
+            case 2 :
+                ans = a-b;
+                console.log("Substraction is = "+ans);
+                break;
+            case 3 :
+                ans = a*b;
+                console.log("Multiplication is = "+ans);
+                break;
+            case 4 :
+                ans = a/b;
+                console.log("Division is = "+ans);
+                break;
+            case 5 :
+                ans = a%b;
+                console.log("Reminder is = "+ans);
+                break;
+            default:
+                console.log("Invalid choice");
+        }
+    </script>
+</body>
+</html>

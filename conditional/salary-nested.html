@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <table border="1">
+        <tr>
+            <td>Salary : </td>
+            <td>
+                <input type="text" id="salary">
+            </td>
+        </tr>
+        <tr>
+            <td>Experience : </td>
+            <td>
+                <input type="text" id="exp">
+            </td>
+        </tr>
+        <tr>
+            <td>Hra : </td>
+            <td>
+                <input type="text" id="hra" value="5">
+            </td>
+        </tr>
+        <tr>
+            <td>Da : </td>
+            <td>
+                <input type="text" id="da" value="8">
+            </td>
+        </tr>
+        <tr>
+            <td>Ta : </td>
+            <td>
+                <input type="text" id="ta" value="9">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="Total Salary" onclick="getsalary()">
+            </td>
+            <td id="total"></td>
+        </tr>
+
+    </table>
+
+    <script>
+        function getsalary()
+        {
+            var sa=parseInt(document.getElementById("salary").value);
+            var exp=parseInt(document.getElementById("exp").value);
+            var hra= 5;
+            var da= 8;
+            var ta= 9;
+            var hra=sa*hra/100;
+            var da=sa*da/100;
+            var ta=sa*ta/100;
+            var incre;
+            if(exp >=1)
+            {
+                if(exp >=5)
+                {
+                    if(exp >=10)
+                    {
+                        incre=15;
+                    }
+                    else{
+                        incre=10;
+                    }
+                }
+                else{
+                    incre=5;
+                }
+            }
+            else{
+                incre=1;
+            }
+            var incre = incre*sa/100;
+            var total=sa+hra+da+incre-ta;
+            document.getElementById("total").innerHTML=total;
+        }
+
+        // var sa=parseInt(prompt("Enter your salary"));
+        // var hra = 5*sa/100;
+        // var da=8*sa/100;
+        // var ta=9*sa/100;
+        // var total = sa+hra+da-ta;
+        // console.log("Net salary = "+total);
+
+    </script>
+</body>
+</html>

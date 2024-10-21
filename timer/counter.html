@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 class="counter">57</h1>
+    <h1 class="counter">28</h1>
+
+    <script>
+        var counters = document.getElementsByClassName('counter');
+        var counterValues = [];
+
+        // Initialize counter values
+        for (var i = 0; i < counters.length; i++) {
+            counterValues.push(parseInt(counters[i].innerHTML));
+        }
+
+        var i = 0;
+        var allDone = false;
+
+        var count = setInterval(function () {
+            allDone = true;
+            for (var j = 0; j < counters.length; j++) {
+                if (i < counterValues[j]) {
+                    counters[j].innerHTML = i;
+                    allDone = false;
+                }
+            }
+            if (allDone) {
+                clearInterval(count);
+            }
+            i++;
+        }, 100);
+    </script>
+</body>
+
+</html>

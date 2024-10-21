@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .col-5 {
+            width: 41.67%;
+        }
+
+        .col-7 {
+            width: 58.33%;
+        }
+
+        #bgcolor {
+            width: 700px;
+            height: 350px;
+            color: white;
+            text-align: center;
+            border-radius: 15px;
+            display: flex;
+            box-shadow: 10px 10px 25px gray;
+        }
+
+        #main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        img {
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+            border-radius: 15px 0 0 15px;
+        }
+
+        input {
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 20px 0;
+            box-shadow: 0px 1px 4px white;
+        }
+
+        h2 {
+            font-size: 25px;
+            font-weight: 300;
+        }
+
+        h5 {
+            color: rgb(230, 229, 229);
+            margin: 20px 0 0 0;
+        }
+
+        #date {
+            color: rgb(182, 180, 180);
+            margin: 5px 0 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="main">
+        <div id="bgcolor">
+            <div class="col-5">
+                <img src="" alt="author" id="img" width="100%" height="100%">
+            </div>
+            <div class="col-7" style="padding: 45px 20px;">
+                <h2 id="quote"></h2>
+                <h5 id="name"></h5>
+                <p id="date"></p>
+                <input type="button" value="Change" onclick="getchange()">
+                <p id="count">1</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        var caption = [
+            {
+                quote: "We cannot solve problems with the kind of thinking we employed when we came up with them.",
+                name: "WILLAM JAMES",
+                date: "07/08/2005",
+                bgcolor: '#01204E',
+                img: "img/author1.jpg"
+            },
+            {
+                quote: "Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time.",
+                name: "THOMAS EDITION",
+                date: "07/09/2005",
+                bgcolor: '#1A4D2E',
+                img: "img/author2.webp"
+            },
+            {
+                quote: "If you want something said, ask a man; if you want something done, ask a woman.",
+                name: "WILLAM JAMES",
+                date: "11/09/2005",
+                bgcolor: '#4D869C',
+                img: "img/author3.webp"
+            },
+            {
+                quote: "Some people want it to happen, some people wish it would happen, others make it happen.",
+                name: "WILLAM JAMES",
+                date: "30/08/2007",
+                bgcolor: '#D6589F',
+                img: "img/author4.webp",
+            },
+            {
+                quote: "God has given us plenty of positive things in our lives, including the beauty of nature.",
+                name: "WILLAM JAMES",
+                date: "09/05/2015",
+                bgcolor: '#5F374B',
+                img: "img/author5.jpg"
+            }
+        ]
+
+        var bg = document.getElementById('bgcolor');
+        bg.style.backgroundColor = caption[0].bgcolor;
+        var qu = document.getElementById('quote').innerHTML = caption[0].quote;
+        var na = document.getElementById('name').innerHTML = caption[0].name;
+        var da = document.getElementById('date').innerHTML = caption[0].date;
+        var im = document.getElementById('img').src = caption[0].img;
+        var i = 1;
+
+        function getchange() {
+            if (i == caption.length) {
+                i = 0;
+            }
+            bg.style.backgroundColor = caption[i].bgcolor;
+            var qu = document.getElementById('quote').innerHTML = caption[i].quote;
+            var na = document.getElementById('name').innerHTML = caption[i].name;
+            var da = document.getElementById('date').innerHTML = caption[i].date;
+            var im = document.getElementById('img').src = caption[i].img;
+            var co = document.getElementById('count').innerHTML = i + 1;
+            i++;
+        }
+
+        var autoplay = setInterval(function () {
+            if (i == caption.length) {
+                i = 0;
+            }
+            bg.style.backgroundColor = caption[i].bgcolor;
+            var qu = document.getElementById('quote').innerHTML = caption[i].quote;
+            var na = document.getElementById('name').innerHTML = caption[i].name;
+            var da = document.getElementById('date').innerHTML = caption[i].date;
+            var im = document.getElementById('img').src = caption[i].img;
+            var co = document.getElementById('count').innerHTML = i + 1;
+            i++;
+        }, 4000);
+
+    </script>
+
+</body>
+
+</html>

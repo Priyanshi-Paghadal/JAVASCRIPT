@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <table border="1">
+        <tr>
+            <td>Prise : </td>
+            <td>
+                <input type="text" id="p">
+            </td>
+        </tr>
+        <tr>
+            <td>Number of year : </td>
+            <td>
+                <input type="text" id="n">
+            </td>
+        </tr>
+        <tr>
+            <td>Rate : </td>
+            <td>
+                <input type="text" id="r">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="interest" onclick="getint()">
+            </td>
+            <td id="total"></td>
+        </tr>
+    </table>
+
+    <script>
+        function getint() {
+            var p=parseInt(document.getElementById("p").value);
+            var n=parseInt(document.getElementById("n").value);
+            var r=parseInt(document.getElementById("r").value);
+            i=p*n*r/100;
+            document.getElementById("total").innerHTML=i;
+        }
+
+        // var p=parseInt(prompt("Enter your prise"));
+        // var n=parseInt(prompt("Enter your time"));
+        // var r=parseInt(prompt("Enter your rate"));
+        // var i = p*n*r/100;
+        // console.log("Interest is = "+i);
+
+    </script>
+</body>
+</html>

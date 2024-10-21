@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form>
+        <select id="choice">
+            <option value="">Select Your Formula</option>
+            <option value="c">Circle</option>
+            <option value="r">Rectangle</option>
+            <option value="t">Triangle</option>
+            <option value="s">Square</option>
+        </select>
+        <input type="button" onclick="getsum()" value="click">
+        <h1 id="ans"></h1>
+    </form>
+
+    <script>
+
+       function getsum() {
+        var choice =document.getElementById("choice").value;
+        if(choice =="c")
+        {
+            var r = parseInt(prompt("Enter radius : "));
+            var area = 3.15*r*r;
+            document.getElementById("ans").innerHTML="area of radius = "+area;
+        }
+        else if(choice =="r")
+        {
+            var l = parseInt(prompt("Enter length : "));
+            var h = parseInt(prompt("Enter height : "));
+            var area = l*h;
+            document.getElementById("ans").innerHTML="area of recatangle = "+area;
+        }
+        else if(choice =="t")
+        {
+            var b = parseInt(prompt("Enter b : "));
+            var h = parseInt(prompt("Enter height : "));
+            var area = 1/2*b*h;
+            document.getElementById("ans").innerHTML = "area of triangle = "+area;
+        }
+        else if(choice =="s")
+        {
+            var l = parseInt(prompt("Enter value : "));
+            var area = l*l;
+            document.getElementById("ans").innerHTML = "area of Square = "+area;
+        }
+        else
+        {
+            document.getElementById("ans").innerHTML="Invalid choice";
+        }
+
+       }
+    </script>
+
+</body>
+</html>

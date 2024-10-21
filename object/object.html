@@ -1,0 +1,37 @@
+<script>
+    
+    var student = {
+        Name : "Priyanshi",
+        Age : 18,
+        Course : "Backend Development",
+        Email : "priyanshi@gmail.com",
+    }
+
+    var abc = student;
+    console.log(abc);
+    console.log(student);
+    console.log(student.Name);
+    console.log(student['Email']);
+
+    // DELETE PROPERTY
+
+    delete student.Course;
+    console.log(student);
+
+    // INSERT PROPERTY
+
+    student.rollno = 1;
+    console.log(student);
+
+    // FOR IN LOOP
+
+    for(var abc in student)
+    {
+        console.log(abc+" : "+student[abc]);
+    }
+    
+    var keys = Object.keys(student);
+
+    console.log(keys);
+
+</script>

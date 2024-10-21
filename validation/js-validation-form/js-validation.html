@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            background-image: url(img/nature.avif);
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: white;
+        }
+
+        .inner {
+            width: 500px;
+            backdrop-filter: blur(4px);
+            border-radius: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .col-12 {
+            width: 100%;
+        }
+
+        form {
+            padding: 40px 60px;
+        }
+
+        form input {
+            outline: none;
+            border: none;
+            padding: 7px 10px;
+            border-radius: 3px;
+            color: white;
+            background-color: rgba(18, 34, 47, 0.6);
+            margin-bottom: 5px;
+        }
+
+        form input:focus {
+            background-color: rgba(18, 34, 47, 0.8) !important;
+            border-bottom: 1px solid white;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 10px 0 15px 0;
+        }
+
+        label {
+            font-size: 18px;
+            margin: 6px 0;
+            display: inline-block;
+        }
+
+        ::-webkit-input-placeholder {
+            color: gray;
+        }
+
+        form select {
+            background-color: rgba(18, 34, 47, 0.5);
+            border: none;
+            color: white;
+            margin-bottom: 5px;
+            padding: 5px;
+        }
+
+        form input[type="radio" i] {
+            height: 15px;
+            width: 50px;
+        }
+
+        form input[type="checkbox" i] {
+            height: 15px;
+            width: 50px;
+        }
+
+        form button {
+            background-color: white;
+            color: black;
+            font-size: 17px;
+            border: none;
+            padding: 10px 0;
+            transition: 0.4s all;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        form button:hover {
+            background-color: rgb(18, 34, 47);
+            cursor: pointer;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="inner">
+            <form onsubmit="return validation()">
+                <h2>LOGIN</h2>
+                <label> Name : </label>
+                <input type="text" id="name" class="col-12" autofocus placeholder="Enter Your Name">
+                <div id="errorname" style="color: red;"></div>
+                <label>Email : </label>
+                <input type="text" id="mail" class="col-12" placeholder="Enter Your Email">
+                <div id="errormail" style="color: red;"></div>
+                <label>Password : </label>
+                <input type="password" id="pass" class="col-12" placeholder="Enter Your Password">
+                <div id="errorpass" style="color: red;"></div>
+                <label>Number : </label>
+                <input type="tel" id="num" class="col-12" placeholder="Enter Your Number">
+                <div id="errornum" style="color: red;"></div>
+                <label>DOB : </label>
+                <input type="date" id="date" class="col-12">
+                <div id="errordob" style="color: red;"></div>
+                <label>Gender : </label>
+                <input type="radio" id="female" name="gender">Female
+                <input type="radio" id="male" name="gender">Male
+                <input type="radio" id="other" name="gender">Other
+                <div id="errorgender" style="color: red;"></div>
+                <label>Select City : </label>
+                <select id="city" class="col-12">
+                    <option value=""></option>
+                    <option value="Surat">Surat</option>
+                    <option value="Rajkot">Rajkot</option>
+                    <option value="Gandhinagar">Gandhinagar</option>
+                    <option value="Ahmadabad">Ahmadabad</option>
+                </select>
+                <div id="errorcity" style="color: red;"></div>
+                <label>Hobby : </label>
+                <input type="checkbox" id="read">Reading
+                <input type="checkbox" id="write">Writing
+                <input type="checkbox" id="walk">Walking
+                <div id="errorcheck" style="color: red;"></div>
+                <button>Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function validation() {
+            var name = document.getElementById('name').value;
+            var mail = document.getElementById('mail').value;
+            var pass = document.getElementById('pass').value;
+            var num = document.getElementById('num').value;
+            var date = document.getElementById('date').value;
+            var female = document.getElementById('female').checked;
+            var male = document.getElementById('male').checked;
+            var other = document.getElementById('other').checked;
+            var city = document.getElementById('city').value;
+            var read = document.getElementById('read').checked;
+            var write = document.getElementById('write').checked;
+            var walk = document.getElementById('walk').checked;
+
+            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            var passformat = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+
+            if (name == '') {
+                document.getElementById('errorname').innerHTML = "Name is required ! ";
+                return false;
+            }
+            else if (name.length < 2) {
+                document.getElementById('errorname').innerHTML = "Minimum 2 character is required ! ";
+                return false;
+            }
+            else if (mail == '') {
+                document.getElementById('errorname').innerHTML = "";
+                document.getElementById('errormail').innerHTML = "Email is required ! ";
+                return false;
+            }
+            else if (!mail.match(mailformat)) {
+                document.getElementById('errorname').innerHTML = "";
+                document.getElementById('errormail').innerHTML = "Enter valid email ! ";
+                return false;
+            }
+            else if (pass == '') {
+                document.getElementById('errormail').innerHTML = "";
+                document.getElementById('errorpass').innerHTML = "Password is required ! ";
+                return false;
+            }
+            else if (!pass.match(passformat)) {
+                document.getElementById('errormail').innerHTML = "";
+                document.getElementById('errorpass').innerHTML = "8 to 15 characters which contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character ! ";
+                return false;
+            }
+            else if (num == '') {
+                document.getElementById('errorpass').innerHTML = "";
+                document.getElementById('errornum').innerHTML = "Number is required ! ";
+                return false;
+            }
+            else if (num.length < 10) {
+                return false;
+            }
+            else if (num.length > 10) {
+                document.getElementById('errornum').innerHTML = "Maximum 10 digit required ! ";
+                return false;
+            }
+            else if (date == '') {
+                document.getElementById('errornum').innerHTML = "";
+                document.getElementById('errordob').innerHTML = "DOB is required ! ";
+                return false;
+            }
+            else if (female == false && male == false && other == false) {
+                document.getElementById('errordob').innerHTML = "";
+                document.getElementById('errorgender').innerHTML = "Please Select Gender ! ";
+                return false;
+            }
+            else if (city == '') {
+                document.getElementById('errorgender').innerHTML = "";
+                document.getElementById('errorcity').innerHTML = "Please Select City ! ";
+                return false;
+            }
+            else if (read == false && write == false && other == false) {
+                document.getElementById('errorcity').innerHTML = "";
+                document.getElementById('errorcheck').innerHTML = "Please Select Hobby ! ";
+                return false;
+            }
+            else {
+                return true;
+            }
+        };
+    </script>
+</body>
+
+</html>

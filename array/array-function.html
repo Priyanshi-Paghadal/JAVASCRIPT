@@ -1,0 +1,182 @@
+<script>
+
+    var a= [1,2,3,4,5];
+    var b =["Hello" , "Hye" ,"Radhu" ,"Priyanshi"];
+    var c = [6,"Me",7,"Mom",8,"Foram"];
+
+    // CONCAT
+
+    //The concat() method concatenates (joins) two or more arrays.
+
+    console.log(a.concat(b,c));
+
+    // EVERY
+
+    //The every() method executes a function for each array element.
+
+    function demo(n)
+    {
+        return n<6;
+    }
+    console.log(a.every(demo));
+
+    // FILTER
+
+    //The filter() method creates a new array filled with elements that pass a test provided by a function.
+
+    var d = ["work","exercise","Good","yeah"];
+    function hyy(n)
+    {
+        return n=="work" || n=="yeah";
+    }
+    console.log(d.filter(hyy));
+
+    // FIND
+
+    //Returns the first element in an array that passes a test
+
+    var age = [18,26,12,8,34];
+
+    function check(n)
+    {
+        return n>18;
+    }
+    console.log(age.find(check));
+
+    // FINDINDEX
+
+    //returns the index of the first element that passes a test
+
+    function above(n)
+    {
+        return n>1;
+    }
+
+    console.log(a.findIndex(above));
+
+    //FOR EACH
+
+    //The forEach() method calls a function for each element in an array.
+
+    function each(n)
+    {
+        console.log(n);
+    }
+    a.forEach(each);
+
+    // INCLUDES
+
+    // Check if fruit[] contains "Banana", starting the search from position 3
+
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    console.log(fruits.includes("Banana",0));
+
+    // JOIN
+
+    // join() returns an array as a string:
+
+    console.log(c.join("    And..   "));
+
+    //LAST INDEXOF
+
+    //The lastIndexOf() method returns the last index (position) of a specified value.
+
+    var fruits = ["Orange","Apple","Mango","Apple","Banana","Apple"];
+    console.log(fruits.lastIndexOf("Apple")); //Returns 5
+
+    // MAP
+
+    //Returns a new array with the results of calling a function for every array element
+
+    function demo(n,index){
+        if(n=="Hello" || n=="Priyanshi")
+        {
+            return n;
+        }
+    }
+    console.log(b.map(demo));
+
+    // POP
+
+    //pop() removes the last element of an array.
+
+    a.pop();
+    console.log(a);
+
+    //PUSH
+
+    //The push() method adds new items to the end of an array.
+
+    b.push("Hemanshi" ,"Rizaa");
+    console.log(b);
+
+    // REDUCE
+
+    //Subtract the numbers in the array, starting from the left
+
+    function red(total,num)
+    {
+        return total-num;
+    }
+    console.log(a.reduce(red));
+
+    // REVERSE
+
+    //The reverse() method reverses the order of the elements in an array.
+
+    console.log(b.reverse());
+
+    //SHIFT
+
+    //The shift() method removes the first item of an array.
+
+    a.shift()
+    console.log(a);
+
+    //SLICE
+
+    //The slice() method returns selected elements in an array, as a new array.
+
+    var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+    console.log(fruits.slice(0, fruits.length-0));
+
+    //SOME
+
+    //The some() method checks if any array elements pass a test
+
+    function check(n)
+    {
+        return n>2;
+    }
+    console.log(a.some(check));
+
+    //SORT
+
+    //The sort() method sorts the elements as strings in alphabetical and ascending order.
+
+    var e = ["Priyanshi" ,"Rizaa" ,"Dipali" , "Ruchita" , "Yashvi"];
+
+    console.log(e.sort());
+
+    //SPLICE
+
+    //The splice() method adds and/or removes array elements.
+
+    var f = [1,2,3,4,5,6,7,8,9,0];
+    f.splice(2,3,"Priyanshi","Radhu");
+    console.log(f);
+
+    // TOSTRING
+
+    //The toString() method returns a string with array values separated by commas.
+
+    console.log(f.toString());
+
+    //UNSHIFT
+
+    //The unshift() method adds new elements to the beginning of an array.
+
+    f.unshift("Good","Also");
+    console.log(f);
+
+</script>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        p {
+            color: red;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .inner {
+            width: 400px;
+        }
+
+        input {
+            width: 100%;
+            font-size: 18px;
+            padding: 5px 20px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        input[type='submit'] {
+            background-color: tomato;
+            color: white;
+            border: none;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="inner">
+            <h1>Get Started</h1>
+            <form onsubmit="return validation()">
+                <label>User Name</label>
+                <br>
+                <input type="text" id="name">
+                <p id="errorname"></p>
+                <br>
+                <br>
+                <label>Email</label>
+                <br>
+                <input type="text" id="email">
+                <p id="erroremail"></p>
+                <br>
+                <br>
+                <label>Password</label>
+                <br>
+                <input type="password" id="pass">
+                <p id="errorpass"></p>
+                <br>
+                <br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function validation() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var pass = document.getElementById("pass").value;
+            var passformat = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+            var emailformat = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (name == "") {
+                document.getElementById('errorname').innerHTML = "Enter name";
+                return false;
+            }
+            else if (name.length <= 2) {
+                document.getElementById('errorname').innerHTML = "Enter maximum 3 character";
+                return false;
+            }
+            else if (email == "") {
+                document.getElementById('errorname').innerHTML = "";
+                document.getElementById('erroremail').innerHTML = "Enter email";
+                return false;
+            }
+            else if (!email.match(emailformat)) {
+                document.getElementById('erroremail').innerHTML = "Enter valid email";
+                return false;
+            }
+            else if (pass == "") {
+                document.getElementById('erroremail').innerHTML = "";
+                document.getElementById('errorpass').innerHTML = "Enter Password";
+                return false;
+            }
+            else if (!pass.match(passformat)) {
+                document.getElementById('errorpass').innerHTML = "Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters";
+                return false;
+            }
+            else if (name != "" && email != "" && pass != "") {
+                document.getElementById('errorpass').innerHTML = "";
+                alert("You have successfully registered");
+                return true;
+            }
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .inner {
+            width: 400px;
+        }
+
+        input:not([type='submit']) {
+            width: 100%;
+            font-size: 18px;
+            padding: 5px 20px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        label {
+            font-size: 18px;
+        }
+
+        input[type='submit'] {
+            padding: 10px 30px;
+            color: white;
+            background: linear-gradient(blue, rgb(39, 113, 209));
+            border: none;
+            display: flex;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="inner">
+            <h1>Sign Up</h1>
+            <form id="validation">
+                <label>First Name : </label>
+                <br>
+                <br>
+                <input type="text" id="fname" name="fname">
+                <br>
+                <br>
+                <label>Last Name : </label>
+                <br>
+                <br>
+                <input type="text" id="lname" name="lname">
+                <br>
+                <br>
+                <label>Email : </label>
+                <br>
+                <br>
+                <input type="text" id="email" name="email">
+                <br>
+                <br>
+                <input type="submit" value="Sign Up">
+            </form>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"
+        type="text/javascript"></script>
+
+    <script>
+        $('#validation').validate({
+            rules: {
+                fname: {
+                    required :true,
+                    minlength: 2,
+                },
+                lname :{
+                    required:true,
+                    minlength:2,
+                },
+                email : {
+                    required:true,
+                    email:true
+                }
+            },
+            messages :{
+                fname :{
+                    required : "<p style='color:red;'>Please enter your first name</p>",
+                    minlength:"<p style='color:red;'>Minimum 2 Character are required</p>",
+                },
+                lname :{
+                    required : "<p style='color:red;'>Please enter your first name</p>",
+                    minlength:"<p style='color:red;'>Minimum 2 Character are required</p>",
+                },
+                email :{
+                    required : "<p style='color:red;'>Please enter your email</p>",
+                    email:"<p style='color:red;'>Please enter a valid email</p>",
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

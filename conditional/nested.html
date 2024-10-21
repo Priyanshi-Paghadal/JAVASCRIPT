@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td>Enter value of a : </td>
+            <td>
+                <input type="text" id="a">
+            </td>
+        </tr>
+        <tr>
+            <td>Enter value of b : </td>
+            <td>
+                <input type="text" id="b">
+            </td>
+        </tr>
+        <tr>
+            <td>Enter value of c : </td>
+            <td>
+                <input type="text" id="c">
+            </td>
+        </tr>
+        <tr>
+            <td>Enter value of d : </td>
+            <td>
+                <input type="text" id="d">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="Find Max" onclick="getmax()">
+            </td>
+            <td id="max"></td>
+        </tr>
+    </table>
+    
+
+    <script>
+        function getmax()
+        {
+            var a=parseInt(document.getElementById('a').value);
+        var b=parseInt(document.getElementById('b').value);
+        var c=parseInt(document.getElementById('c').value);
+        var d=parseInt(document.getElementById('d').value);
+        if(a>b)
+        {
+            if(a>c)
+            {
+                if(a>d)
+                {
+                    document.getElementById('max').innerHTML="A is maximum.";
+                }
+                else{
+                    document.getElementById('max').innerHTML="D is maximum.";
+                }
+            }
+            else
+            {
+                if(c>d)
+                {
+                    document.getElementById('max').innerHTML="C is maximum.";
+                }
+                else{
+                    document.getElementById('max').innerHTML="D is maximum.";
+                }
+            }
+        }
+        else{
+            if(b>c)
+            {
+                if(b>d)
+                {
+                    document.getElementById('max').innerHTML="B is maximum.";
+                }
+                else{
+                    document.getElementById('max').innerHTML="D is maximum.";
+                }
+            }
+            else{
+                if(c>d)
+                {
+                    document.getElementById('max').innerHTML="C is maximum.";
+                }
+                else{
+                    document.getElementById('max').innerHTML="D is maximum.";
+                }
+            }
+        }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" placeholder="Enter Movie Name" id="moviename">
+    <input type="button" onclick="getmovie()" value="Click">
+    <img src="" alt="movie">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        function getmovie() {
+            var moviename = document.getElementById("moviename").value;
+            $.ajax({
+                url: "http://www.omdbapi.com/?apikey=c53434ac&t=" + moviename,
+                type: "get",
+                success: function (data) {
+                    console.log(data);
+                    document.getElementById("moviename").value = "Movie Name = "+data.Title;
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <table border="1" cellspacing="0" cellpadding="5">
+        <tr>
+            <td>A = </td>
+            <td>
+                <input type="text" id="a">
+            </td>
+            <td id="a1"></td>
+        </tr>
+        <tr>
+            <td>B = </td>
+            <td>
+                <input type="text" id="b">
+            </td>
+            <td id="a2"></td>
+        </tr>
+        <tr><td>
+            <input type="button" value="click" onclick="swap()">
+        </td></tr>
+        
+    </table>
+
+    <script>
+        swap = function() {
+            // WITH 3RD VARIABLE
+            var a=parseInt(document.getElementById("a").value);
+            var b=parseInt(document.getElementById("b").value);
+            var c;
+            c=a;
+            a=b;
+            b=c;
+            document.getElementById("a1").innerHTML= a;
+            document.getElementById("a2").innerHTML= b;
+        }
+
+        // WITHOUT 3RD VARIABLE
+
+        var a=20;
+        var b=15;
+        console.log("a = "+a+" b = "+b);
+        console.log("after swapping ");
+        
+        a=a+b;
+        b=a-b;
+        a=a-b;
+        
+        console.log("a = "+a+" b = "+b);
+        
+        // DISTRUCTING
+        
+        var p=40;
+        var q=60;
+        
+        console.log("p = "+p+" q = "+q);
+        console.log("after swapping ");
+        
+        [p,q]=[q,p]
+        console.log("p = "+p+" q = "+q);
+        
+        // XOR 
+
+        var x=90;
+        var y=105;
+        console.log("x = "+x+" y = "+y);
+        console.log("after swapping ");
+        
+        x=x^y;
+        y=x^y;
+        x=x^y;
+        
+        console.log("x = "+x+" y = "+y);
+
+    </script>
+</body>
+</html>

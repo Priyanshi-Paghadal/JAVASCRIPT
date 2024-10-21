@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1 class="count">57</h1>
+    <h1 class="count">27</h1>
+    <h1 class="count">97</h1>
+
+    <script>
+
+        var counts = document.querySelectorAll('.count');
+
+        counts.forEach((count) => {
+            let targetValue = parseInt(count.innerHTML);
+            count.innerHTML = 0;
+            let counter = setInterval(() => {
+                count.innerHTML = parseInt(count.innerHTML) + 1;
+                if (parseInt(count.innerHTML) === targetValue) {
+                    clearInterval(counter);
+                }
+
+            }, 50);
+        });
+    </script>
+
+</body>
+
+</html>

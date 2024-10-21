@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="out"></div>
+    
+<a href="json.html">change</a>
+
+<script>
+    // console.log(students);
+
+    function viewData() {
+            var viewdata = localStorage.getItem('student');
+            var view = JSON.parse(viewdata);
+
+            console.log(view);
+
+            var data = "<table border='1'><tr><th>Name  </th><th>Email  </th><th>Age  </th><th>Delete  </th><th>Edit  </th><tr>";
+
+            for (var i = 0; i < view.length; i++) {
+                data += `<tr>`;
+                data += `<td>${view[i]['name']}</td>`;
+                data += `<td>${view[i]['email']}</td>`;
+                data += `<td>${view[i]['age']}</td>`;
+                data += `<td><a href='javascript:void(0)'>Delete</a></td>`
+                data += `<td><a href='javascript:void(0)'>Edit</a></td>`
+                data += `<tr>`;
+
+            }
+            data += `</table>`;
+            document.getElementById('out').innerHTML = data;
+        }
+        viewData();
+</script>
+
+</body>
+</html>

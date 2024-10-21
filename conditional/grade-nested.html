@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <table border="1" cellpadding="6" cellspacing="0">
+        <tr>
+            <td>HTML</td>
+            <td>
+                <input type="text" id="s1">
+            </td>
+        </tr>
+        <tr>
+            <td>DSA</td>
+            <td>
+                <input type="text" id="s2">
+            </td>
+        </tr>
+        <tr>
+            <td>JS</td>
+            <td>
+                <input type="text" id="s3">
+            </td>
+        </tr>
+        <tr>
+            <td>CSS</td>
+            <td>
+                <input type="text" id="s4">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="Get Result" onclick="getres()">
+            </td>
+            <td id="total"></td>
+        </tr>
+        <tr>
+            <td id="pr">PR is :</td>
+            <td id="grade"></td>
+        </tr>
+    </table>
+
+    <script>
+        function getres()
+        {
+            var s1=parseInt(document.getElementById("s1").value);
+            var s2=parseInt(document.getElementById("s2").value);
+            var s3=parseInt(document.getElementById("s3").value);
+            var s4=parseInt(document.getElementById("s4").value);
+            var total=s1+s2+s3+s4;
+            document.getElementById("total").innerHTML= "Total is :"+total;
+            var pr = total/4;
+            document.getElementById("pr").innerHTML="PR is : "+pr+"%";
+            if(pr >= 35)
+            {
+                if(pr >= 50)
+                {
+                    if(pr >=75)
+                    {
+                        if(pr >= 90)
+                        {
+                            document.getElementById("grade").innerHTML="A+";
+                        }
+                        else{
+                            document.getElementById("grade").innerHTML="A";
+                        }
+                    }
+                    else{
+                        document.getElementById("grade").innerHTML="B";
+                    }
+                }
+                else{
+                    document.getElementById("grade").innerHTML="C";
+                }
+            }
+            else{
+                document.getElementById("grade").innerHTML="Fail";
+            }
+        }
+        
+
+        // var s1=parseInt(prompt("Enter Subject 1 value :"));
+        // var s2=parseInt(prompt("Enter Subject 2 value :"));
+        // var s3=parseInt(prompt("Enter Subject 3 value :"));
+        // var total=s1+s2+s3;
+        // console.log("Total is = "+total);
+        // var perc = total/3;
+        // console.log("percentage is : "+perc);
+
+    </script>
+</body>
+</html>

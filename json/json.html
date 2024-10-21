@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- <a href="json1.html">Change</a> -->
+    <table border="1" cellpadding="10" cellspacing="7">
+        <tr>
+            <td>Search : </td>
+            <td><input type="text" id="search" onkeyup="searchItem()"></td>
+        </tr>
+        <tr>
+            <td>Name : </td>
+            <td><input type="text" id="name"></td>
+        </tr>
+        <tr>
+            <td>Email : </td>
+            <td><input type="text" id="email"></td>
+        </tr>
+        <tr>
+            <td>Age : </td>
+            <td><input type="text" id="age"></td>
+        </tr>
+        <tr>
+            <td>DOB : </td>
+            <td><input type="date" id="date"></td>
+        </tr>
+        <tr>
+            <td>Gender : </td>
+            <td>
+                <input type="radio" name="gender" id="female" value="female">Female
+                <input type="radio" name="gender" id="male" value="male">Male
+            </td>
+        </tr>
+        <tr>
+            <td>Profile Pic : </td>
+            <td><input type="file" id="img"></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="editno"></td>
+            <td><input type="button" value="Insert" onclick="addData()" id="submit"></td>
+        </tr>
+    </table>
+
+    <div id="out"></div>
+
+    <script>
+
+        var students = [];
+
+        function addData() {
+            if (students == null) {
+                students = [];
+            }
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var age = document.getElementById('age').value;
+            var date = document.getElementById('date').value;
+            var img = document.getElementById('img').files[0].name;
+            var editno = document.getElementById('editno').value;
+            var female = document.getElementById('female').checked;
+            var male = document.getElementById('male').checked;
+            var gender = female ? "female" : "male";
+            if (editno) {
+                for (var i = 0; i < students.length; i++) {
+                    if (students[i]['no'] == editno) {
+                        students[i]['name'] = name;
+                        students[i]['email'] = email;
+                        students[i]['age'] = age;
+                        students[i]['date'] = date;
+                        students[i]['img'] = img;
+                        students[i]['gender'] = gender;
+                        document.getElementById('submit').value = "Insert";
+                    }
+
+                }
+
+            }
+            else {
+                var stu = {
+                    name: name,
+                    email: email,
+                    age: age,
+                    date: date,
+                    img: img,
+                    gender: gender,
+                    no: Math.round(Math.random() * 1000),
+                }
+                students.push(stu);
+            }
+
+            var student = JSON.stringify(students);
+            localStorage.setItem('students', student);
+
+
+            viewData();
+
+            var name = document.getElementById('name').value = "";
+            var email = document.getElementById('email').value = "";
+            var age = document.getElementById('age').value = "";
+            var date = document.getElementById('date').value = "";
+            var female = document.getElementById('female').checked = false;
+            var male = document.getElementById('male').checked = false;
+            var img = document.getElementById('img').value = "";
+            document.getElementById('editno').innerHTML = "";
+
+        }
+
+        function viewData() {
+            var viewdata = localStorage.getItem('students');
+            var view = JSON.parse(viewdata);
+
+            var data = "<table border='1'><tr><th>Name  </th><th>Email  </th><th>Age  </th><th>DOB </th><th>Gender </th><th>Profle Pic</th><th>Delete  </th><th>Update</th><tr>";
+
+            for (var i = 0; i < view.length; i++) {
+                data += `<tr>`;
+                data += `<td>${view[i]['name']}</td>`;
+                data += `<td>${view[i]['email']}</td>`;
+                data += `<td>${view[i]['age']}</td>`;
+                data += `<td>${view[i]['date']}</td>`;
+                data += `<td>${view[i]['gender']}</td>`;
+                data += `<td><img src='img/${view[i]['img']}' width='100px'></td>`;
+                data += `<td><a href='javascript:deleteData(${view[i]['no']})'>Delete</a></td>`
+                data += `<td><a href='javascript:updateData(${view[i]['no']})'>Edit</a></td>`
+                data += `<tr>`;
+
+            }
+            data += `</table>`;
+            document.getElementById('out').innerHTML = data;
+        }
+        viewData();
+
+        function deleteData(no) {
+            var deletedata = localStorage.getItem('students');
+            var dedata = JSON.parse(deletedata);
+            for (var i = 0; i < dedata.length; i++) {
+                if (dedata[i]['no'] == no) {
+                    dedata.splice(i, 1);
+                }
+
+            }
+            localStorage.setItem('students', JSON.stringify(dedata));
+
+            viewData();
+
+        }
+
+        function updateData(no) {
+            var updata = localStorage.getItem('students');
+            var udata = JSON.parse(updata);
+
+            for (var i = 0; i < udata.length; i++) {
+                if (udata[i]['no'] == no) {
+                    document.getElementById('name').value = udata[i]['name'];
+                    document.getElementById('email').value = udata[i]['email'];
+                    document.getElementById('age').value = udata[i]['age'];
+                    document.getElementById('date').value = udata[i]['date'];
+                    document.getElementById('img').name = udata[i]['img'];
+                    document.getElementById('editno').value = no;
+                    document.getElementById('submit').value = "Update";
+
+                }
+            }
+        }
+
+        function searchItem() {
+            var search = document.getElementById('search').value;
+
+            var searchitem = localStorage.getItem('students');
+            var record = JSON.parse(searchitem);
+
+            var data = "<table border='1'><tr><th>Name  </th><th>Email  </th><th>Age  </th><th>DOB </th><th>Gender </th><th>Profle Pic</th><th>Delete  </th><th>Update</th><tr>";
+
+            record.forEach((pName, i) => {
+                if (pName.name.match(search)) {
+                    data += `<tr>`;
+                    data += `<td>${record[i]['name']}</td>`;
+                    data += `<td>${record[i]['email']}</td>`;
+                    data += `<td>${record[i]['age']}</td>`;
+                    data += `<td>${record[i]['date']}</td>`;
+                    data += `<td>${record[i]['gender']}</td>`;
+                    data += `<td><img src='img/${record[i]['img']}' width='100px'></td>`;
+                    data += `<td><a href='javascript:deleteData(${record[i]['no']})'>Delete</a></td>`;
+                    data += `<td><a href='javascript:updateData(${record[i]['no']})'>Edit</a></td>`;
+                    data += `<tr>`;
+                }
+            });
+
+            data += `</table>`;
+            document.getElementById('out').innerHTML = data;
+        }
+
+    </script>
+
+</body>
+
+</html>

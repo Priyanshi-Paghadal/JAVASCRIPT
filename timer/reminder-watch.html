@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="inner">
+            <h1 id="timer">00 : 00 : 00 : 00</h1>
+            <input type="date" id="startdate">
+            <input type="time" id="start">
+            <button onclick="starttimer()">Start</button>
+        </div>
+    </div>
+
+    <script>
+        var timer = document.getElementById("timer");
+        var time;
+
+        var day = 0;
+        var hours = 0;
+        var minutes = 0;
+        var seconds = 0;
+
+        document.getElementById('startdate').addEventListener('input', function () {
+            var redate = new Date(this.value).getDate();
+            const date = new Date().getDate();
+            day = redate - date;
+        });
+
+        document.getElementById('start').addEventListener('input', function () {
+            var startTime = this.value.split(':');
+            hours = parseInt(startTime[0]);
+            minutes = parseInt(startTime[1]);
+            seconds = 0;
+        });
+
+        function starttimer() {
+            time = setInterval(function () {
+                seconds--;
+                if (seconds < 0) {
+                    minutes--;
+                    seconds = 59;
+                }
+                if (minutes < 0) {
+                    hours--;
+                    minutes = 59;
+                }
+                if (hours < 0) {
+                    day--;
+                    hours = 23;
+                }
+                if (day == 0 && hours == 0 && minutes == 0 && seconds == 0) {
+                    clearInterval(time);
+                    alert("Your Meeting is Now..");
+                }
+                timer.innerHTML = out(day) + " : " + out(hours) + " : " + out(minutes) + " : " + out(seconds);
+            }, 1);
+        }
+
+        function out(number) {
+            return (number < 10 ? '0' : '') + number;
+        }
+
+
+
+        // console.log(date);
+
+        // var day = date-
+
+    </script>
+
+</body>
+
+</html>

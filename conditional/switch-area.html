@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        var choice = parseInt(prompt("Press 1 for Circle press 2 for Rectangle press 3 for Triangle"));
+        switch (choice) {
+            case 1 :
+                var r = parseInt(prompt("Enter radius : "));
+                var area = 3.14*r*r;
+                console.log("Circle is = "+area);
+                break;
+            case 2 :
+                var l = parseInt(prompt("Enter l value : "));
+                var h = parseInt(prompt("Enter h value : "));
+                area = l * h;
+                console.log("Rectangle is = "+area);
+                break;
+            case 3 :
+                var b = parseInt(prompt("Enter b value : "));
+                var h = parseInt(prompt("Enter h value : "));
+                area = 0.5*b * h;
+                console.log("Triangle is = "+area);
+                break;
+            default:
+                console.log("Invalid choice");
+        }
+    </script>
+</body>
+</html>

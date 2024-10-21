@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .flex {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .inner {
+            width: 500px;
+            padding: 40px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-image: url(./img/weather.webp);
+        }
+
+        form {
+            background: url(./img/bg-weather.jpg);
+            height: 100vh;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+        }
+
+        form div {
+            margin-top: 40px;
+        }
+
+        form #selectcity {
+            width: 500px;
+            padding: 10px;
+            font-size: 17px;
+            outline: none;
+        }
+
+        form input[type='button'] {
+            width: 200px;
+            font-size: 17px;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form>
+        <div>
+            <input type="text" id="selectcity" placeholder="Search weather here...">
+            <input type="button" value="Click" onclick="getData()">
+        </div>
+    </form>
+    <div id="result"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+
+        function getData() {
+            var city = document.getElementById('selectcity').value;
+            $.ajax({
+                url: 'https://api.openweathermap.org/data/2.5/weather',
+                data: {
+                    q: city,
+                    appid: 'f7befe39541948a14232318fd9add747',
+                },
+                type: 'get',
+                success: function (data) {
+                    console.log(data);
+                    var data = `
+                    <div class='main'>
+                        <div class='inner'>
+                            <h2 style='text-align:center;margin-bottom:20px;'>Weather of ${city} , ${data.sys.country}</h2>
+                            <div class='flex'>
+                                <h3>Wind Speed : ${data.wind['speed']}</h3>
+                                <h3>Wind Deg : ${data.wind['deg']}</h3>
+                            </div>
+                            <h3 style='text-align:center;margin-bottom:10px;'>Temp : ${data.main.temp}</h3>
+                            <h4 style='text-align:center;'>Clouds : ${data.clouds.all}%</h4>
+                            <div class='flex'>
+                                <span>Coord lon : ${data.coord.lon}</span>
+                                <span>Coord lat : ${data.coord.lat}</span>
+                            </div>
+                            <p style='text-align:center;'>Humidity : ${data.main.humidity}</p>
+                        </div>
+                    </div>`;
+                    document.getElementById('result').innerHTML = data;
+                }
+
+            });
+
+        }
+    </script>
+
+</body>
+
+</html>

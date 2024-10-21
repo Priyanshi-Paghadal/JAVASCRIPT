@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1 id="ans"></h1>
+
+    <h1 id="res"></h1>
+
+    <h1 id="out"></h1>
+    <button onclick="clearInterval(timer2)">STOP</button>
+
+    <script>
+
+        var timer1 = setTimeout(function () {
+            document.getElementById('ans').innerHTML = "Hello...";
+        }, 1000);
+
+        var i = 0;
+
+        var timer = setInterval(() => {
+            if (i == 50) {
+                clearInterval(timer);
+            }
+            document.getElementById('res').innerHTML = i;
+            i++;
+        }, 300);
+
+        var timer2 = setInterval(() => {
+            document.getElementById('out').innerHTML += "Priyanshi.... <br>";
+
+        }, 1000);
+
+    </script>
+
+</body>
+
+</html>

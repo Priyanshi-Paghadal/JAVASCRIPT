@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex {
+            display: flex;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: cornflowerblue;
+            margin: 10px;
+        }
+
+        #locat {
+            border: none;
+            color: white;
+            background-color: black;
+            padding: 10px 20px;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="flex">
+        <div id="box"></div>
+        <div id="box"></div>
+        <div id="box"></div>
+        <div id="box"></div>
+        <div id="box"></div>
+        <div id="box"></div>
+        <div id="box"></div>
+        <div id="box"></div>
+        <div id="box"></div>
+        <div id="box"></div>
+        <div id="box"></div>
+        <div id="box"></div>
+    </div>
+
+    <button id="locat">Location</button>
+
+    <script>
+        var box = document.querySelectorAll("#box");
+        for (var i = 0; i < box.length; i++) {
+            box[i].addEventListener("click", function () {
+                this.style.backgroundColor = "pink";
+            });
+            box[i].addEventListener("mouseover", function () {
+                this.style.backgroundColor = "violet";
+                this.style.width = "200px";
+                this.style.transition = "0.4s";
+            });
+            box[i].addEventListener("mouseleave", function () {
+                this.style.backgroundColor = "";
+                this.style.height = "150px";
+            });
+        }
+
+        // LOCATION
+
+        var btn = document.querySelector("#locat");
+        btn.addEventListener("click", function () {
+            window.location = "../object/quote.html";
+        });
+
+    </script>
+
+</body>
+
+</html>

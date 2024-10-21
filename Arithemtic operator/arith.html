@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <select id="choice">
+            <option value="">Select Your Operation</option>
+            <option value="a">Addition</option>
+            <option value="s">Substraction</option>
+            <option value="m">Multiplication</option>
+            <option value="d">Divison</option>
+
+        </select>
+        <input type="button" onclick="getsum()" value="click">
+        <h1 id="ans"></h1>
+    </form>
+    <script>
+        function getsum() {
+            var choice = document.getElementById("choice").value;
+            var a = parseInt(prompt("Enter a value"));
+            var b = parseInt(prompt("Enter b value"));
+            if (choice == "a") {
+                ans = a + b;
+                document.getElementById("ans").innerHTML = "Addition is : " + ans;
+            }
+            else if (choice == "s") {
+                ans = a - b;
+                document.getElementById("ans").innerHTML = "Substraction is : " + ans;
+            }
+            else if (choice == "m") {
+                ans = a * b;
+                document.getElementById("ans").innerHTML = "Multiplication is : " + ans;
+            }
+            else if (choice == "d") {
+                ans = a / b;
+                document.getElementById("ans").innerHTML = "Division is : " + ans;
+            }
+            else {
+                document.getElementById("ans").innerHTML = "Invalid choice";
+            }
+
+        }
+    </script>
+</body>
+
+</html>

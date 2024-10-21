@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+
+    // WITHOUT PARAMETER
+
+    class school{
+        set(){
+            this.school_name = "Tapovan";
+            this.school_year = 1995;
+        }
+        get(){
+            console.log("School Name = "+this.school_name);
+            console.log("School Year = "+this.school_year);
+        }
+    }
+    class student extends school{
+        seta(){
+            this.student_name = "Priyanshi";
+            this.student_number = 28;
+        }
+        geta(){
+            console.log("Student Name = "+this.student_name);
+            console.log("Student Number = "+this.student_number);
+        }
+    }
+
+    var stu1 = new student();
+    stu1.set();
+    stu1.get();
+    stu1.seta();
+    stu1.geta();
+
+    // WITH PARAMETER
+
+    class university{
+        constructor(university_name, university_year){
+            this.university_name = university_name;
+            this.university_year = university_year;
+        }
+        getuniversity(){
+            console.log("University Name = "+this.university_name);
+            console.log("University Year = "+this.university_year);
+        }
+    }
+    class student1 extends university{
+        constructor(student_name, student_number , university_name, university_year){
+            super(university_name, university_year);
+            this.student_name = student_name;
+            this.student_number = student_number;
+        }
+        getstudent(){
+            console.log("Student Name = "+this.student_name);
+            console.log("Student Number = "+this.student_number);
+        }
+    }
+
+    var stu2 = new student1("Priyanshi",1,"Silver Oak",1998);
+    stu2.getuniversity();
+    stu2.getstudent();
+
+</script>
+
+</body>
+</html>

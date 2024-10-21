@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+        }
+
+        div {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        label {
+            font-size: 18px;
+        }
+
+        input {
+            width: 300px;
+            font-size: 18px;
+            padding: 7px;
+        }
+
+        #submit {
+            display: inline-block;
+            color: #fff;
+            background-color: #000;
+            padding: 10px 30px;
+            font-size: 18px;
+            text-decoration: none;
+            width: 100%;
+            border: none;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <form>
+            <div>
+                <label>Name : </label>
+                <input type="text" id="name">
+            </div>
+            <div>
+                <label>Last Name : </label>
+                <input type="text" id="lastName">
+            </div>
+            <div>
+                <label>Email : </label>
+                <input type="text" id="email">
+            </div>
+            <div>
+                <label>Mobile No : </label>
+                <input type="text" id="num">
+            </div>
+            <div>
+                <input type="text" id="editno">
+                <!-- <a href="" target="" onclick="addData()">Insert</a> -->
+                <input type="button" id="submit" onclick="addData()" value="Insert">
+                <!-- <a href="info-login.html" target="_blank" onclick="addData()">Insert</a> -->
+            </div>
+        </form>
+    </div>
+
+    <div id="res"></div>
+
+    <script>
+        var user = [
+            {
+                name: "Vishruti",
+                lastName: "Pansuriya",
+                email: "vishruti@gmail.com",
+                num: "89898 54627",
+                no: Math.round(Math.random() * 1000)
+            },
+            {
+                name: "Drashti",
+                lastName: "Mori",
+                email: "drashti@gmail.com",
+                num: "89468 58927",
+                no: Math.round(Math.random() * 1000)
+            },
+            {
+                name: "Ayushi",
+                lastName: "Dhanani",
+                email: "aayushi@gmail.com",
+                num: "95076 59027",
+                no: Math.round(Math.random() * 1000)
+            }
+        ];
+
+        function addData() {
+            var name = document.getElementById('name').value;
+            var lastName = document.getElementById('lastName').value;
+            var email = document.getElementById('email').value;
+            var num = document.getElementById('num').value;
+            var editno = document.getElementById('editno').value;
+            if (editno) {
+                for (var i = 0; i < user.length; i++) {
+                    if (user[i]['no'] == editno) {
+                        user[i]['name'] = name;
+                        user[i]['lastName'] = lastName;
+                        user[i]['email'] = email;
+                        user[i]['num'] = num;
+                        document.getElementById('submit').value = "Insert";
+                    }
+                }
+            }
+            else {
+                var adduser = {
+                    name: name,
+                    lastName: lastName,
+                    email: email,
+                    num: num,
+                    no: Math.round(Math.random() * 1000)
+                }
+                user.push(adduser);
+            }
+
+            var users = JSON.stringify(user);
+            localStorage.setItem('user', users);
+
+            var name = document.getElementById('name').value = "";
+            var lastName = document.getElementById('lastName').value = "";
+            var email = document.getElementById('email').value = "";
+            var num = document.getElementById('num').value = "";
+            document.getElementById('editno').value = "";
+            viewData();
+        }
+
+
+
+        function viewData() {
+            var viewdata = localStorage.getItem('user');
+            var view = JSON.parse(viewdata);
+
+            var data = "<table border='1' cellspacing='10' width='700px'><tr align='left'><th>Name </th><th>Last Name </th><th>Email </th><th>Mobile Number</th><th>Delete</th><th>Update</th></tr>";
+
+            for (var i = 0; i < view.length; i++) {
+                data += `<tr>`;
+                data += `<td>${view[i]['name']}</td>`;
+                data += `<td>${view[i]['lastName']}</td>`;
+                data += `<td>${view[i]['email']}</td>`;
+                data += `<td>${view[i]['num']}</td>`;
+                data += `<td><a href="javascript:deleteData(${view[i]['no']})">Delete</a></td>`;
+                data += `<td><a href="javascript:updateData(${view[i]['no']})">Update</a></td>`;
+                data += `</tr>`;
+            }
+            data += `</table>`;
+            document.getElementById('res').innerHTML = data;
+        }
+        viewData();
+
+        function deleteData(no) {
+            var deletedata = localStorage.getItem('user');
+            var dedata = JSON.parse(deletedata);
+            for (var i = 0; i < dedata.length; i++) {
+                if (dedata[i]['no'] == no) {
+                    dedata.splice(i, 1);
+                }
+            }
+            localStorage.setItem('user', JSON.stringify(dedata));
+            viewData();
+        }
+
+        function updateData(no) {
+            var updateData = localStorage.getItem('user');
+            var updata = JSON.parse(updateData);
+            for (var i = 0; i < updata.length; i++) {
+                if (updata[i]['no'] == no) {
+                    document.getElementById('name').value = updata[i]['name'];
+                    document.getElementById('lastName').value = updata[i]['lastName'];
+                    document.getElementById('email').value = updata[i]['email'];
+                    document.getElementById('num').value = updata[i]['num'];
+                    document.getElementById('editno').value = no;
+                    document.getElementById('submit').value = "Update";
+                    
+                }
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

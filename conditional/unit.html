@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1" cellspacing="0">
+        <tr>
+            <td>Enter your unit</td>
+            <td>
+                <input type="text" id="unit">
+            </td>
+        </tr>
+        <tr>
+            <td>prise</td>
+            <td id="prise"></td>
+        </tr>
+        <tr>
+            <td>Amount</td>
+            <td id="amount"></td>
+        </tr>
+        <tr>
+            <td>Tax</td>
+            <td id="tax"></td>
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td id="total"></td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="submit" onclick="gettotal()">
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        function gettotal()
+        {
+            var unit = document.getElementById("unit").value;
+            if(unit >0 && unit<=50)
+            {
+                prise=0.50;
+                document.getElementById("prise").innerHTML=prise;
+            }
+            else if(unit > 50 && unit <=150)
+            {
+                prise=0.75;
+                document.getElementById("prise").innerHTML=prise;
+            }
+            else if(unit > 150 && unit<=250)
+            {
+                prise=1.20;
+                document.getElementById("prise").innerHTML=prise;
+            }
+            else if(unit>=250){
+                prise = 1.50;
+                document.getElementById("prise").innerHTML=prise;
+            }
+            else{
+                prise=0;
+                document.getElementById("prise").innerHTML = prise;
+            }
+            var amount=unit*prise;
+            document.getElementById("amount").innerHTML= amount;
+            var tax=amount*20/100;
+            document.getElementById("tax").innerHTML=tax;
+            var total=amount+tax;
+            document.getElementById("total").innerHTML=total; 
+        }
+
+        // var unit = parseInt(prompt("Enter your unit"));
+        // var prise;
+        // var amount;
+        // var tax;
+        // var total;
+        // if(unit >0 && unit<=50)
+        // {
+        //     prise=0.50;
+        //     document.getElementById("prise").innerHTML=prise;
+        // }
+        // else if(unit > 50 && unit <=150)
+        // {
+        //     prise=0.75;
+        //     document.getElementById("prise").innerHTML=prise;
+        // }
+        // else if(unit > 150 && unit<=250)
+        // {
+        //     prise=1.20;
+        //     document.getElementById("prise").innerHTML=prise;
+        // }
+        // else if(unit>=250){
+        //     prise = 1.50;
+        //     document.getElementById("prise").innerHTML=prise;
+        // }
+        // else{
+        //     prise=0;
+        //     document.getElementById("prise").innerHTML = prise;
+        // }
+        // var amount=unit*prise;
+        // console.log("Amount is = "+amount);
+        // var tax=amount*20/100;
+        // console.log("Tax is = "+tax);
+        // var total=amount+tax;
+        // console.log("Total Amount is = "+total);
+    </script>
+</body>
+</html>

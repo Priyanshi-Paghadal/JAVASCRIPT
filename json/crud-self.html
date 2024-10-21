@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .w-6 {
+            width: 16.67%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form>
+        <label>Roll No. </label>
+        <input type="number" id="rno">
+        <br>
+        <br>
+        <label>First Name : </label>
+        <input type="text" id="fname">
+        <br>
+        <br>
+        <label>Last Name : </label>
+        <input type="text" id="lname">
+        <br>
+        <br>
+        <label>Marks : </label>
+        <input type="number" id="marks">
+        <br>
+        <br>
+        <input type="hidden" id="no">
+        <input type="button" value="Add Data" onclick="addData()" id="submit">
+    </form>
+
+    <div id="out"></div>
+
+    <script>
+        var datas = [];
+        function addData() {
+            if (datas == null) {
+                datas = [];
+            }
+            var rno = document.getElementById("rno").value;
+            var fname = document.getElementById("fname").value;
+            var lname = document.getElementById("lname").value;
+            var marks = document.getElementById("marks").value;
+            var no = document.getElementById("no").value;
+            if (no) {
+                for (var i = 0; i < datas.length; i++) {
+                    if (datas[i]['no'] == no) {
+                        datas[i]['rno'] = rno;
+                        datas[i]['fname'] = fname;
+                        datas[i]['lname'] = lname;
+                        datas[i]['marks'] = marks;
+                        document.getElementById('submit').value = "Add Data";
+                    }
+                }
+            }
+            else {
+                var add = {
+                    rno: rno,
+                    fname: fname,
+                    lname: lname,
+                    marks: marks,
+                    no: Math.round(Math.random() * 1000),
+                }
+                datas.push(add);
+            }
+
+            var data = JSON.stringify(datas);
+            localStorage.setItem('data', data);
+
+            viewData();
+
+            document.getElementById("rno").value = "";
+            document.getElementById("fname").value = "";
+            document.getElementById("lname").value = "";
+            document.getElementById("marks").value = "";
+            document.getElementById("no").value = "";
+            document.getElementById('submit').value = "Add Data";
+
+        }
+
+        function viewData() {
+            var view = localStorage.getItem('data');
+            var viewdata = JSON.parse(view);
+
+            var data = "<div class='container'><div class='flex'><div class='w-6'><p>Roll No.</p></div><div class='w-6'><p>First Name</p></div><div class='w-6'><p>Last Name</p></div><div class='w-6'><p>Marks</p></div><div class='w-6'><p>Update</p></div><div class='w-6'><p>Delete</p></div></div>";
+            for (var i = 0; i < viewdata.length; i++) {
+                data += `<div class='flex'>`;
+                data += `<div class='w-6'><p>${viewdata[i]['rno']}</p></div>`;
+                data += `<div class='w-6'><p>${viewdata[i]['fname']}</p></div>`;
+                data += `<div class='w-6'><p>${viewdata[i]['lname']}</p></div>`;
+                data += `<div class='w-6'><p>${viewdata[i]['marks']}</p></div>`;
+                data += `<div class='w-6'><a href='javascript:updateData(${viewdata[i]['no']})'>Update</a></div>`;
+                data += `<div class='w-6'><a href='javascript:deleteData(${viewdata[i]['no']})'>Remove</a></div>`;
+                data += `</div>`;
+            }
+            data += `</div>`;
+            document.getElementById('out').innerHTML = data;
+        }
+        viewData();
+
+        function deleteData(no) {
+            var deletedata = localStorage.getItem('data');
+            var Delete = JSON.parse(deletedata);
+            for (var i = 0; i < Delete.length; i++) {
+                if (Delete[i]['no'] == no) {
+                    Delete.splice(i, 1);
+                }
+
+            }
+            localStorage.setItem('data', JSON.stringify(Delete));
+            viewData();
+        }
+
+        function updateData(no) {
+            var update = localStorage.getItem('data');
+            var updata = JSON.parse(update);
+
+            for (var i = 0; i < updata.length; i++) {
+                if (updata[i]['no'] == no) {
+                    document.getElementById('rno').value = updata[i]['rno'];
+                    document.getElementById('fname').value = updata[i]['fname'];
+                    document.getElementById('lname').value = updata[i]['lname'];
+                    document.getElementById('marks').value = updata[i]['marks'];
+                    document.getElementById('no').value = no;
+                    document.getElementById('submit').value = "Update Data";
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

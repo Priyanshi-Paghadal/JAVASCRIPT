@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+
+class grandfather{
+    constructor(grandpa_name , grandfather_age){
+        this.grandpa_name = grandpa_name;
+        this.grandfather_age = grandfather_age;
+    }
+    get(){
+        console.log(`${"Grandfather Name = "+this.grandpa_name}`);
+        console.log(`${"Grandfather Age = "+this.grandfather_age}`);
+    }
+}
+
+class father extends grandfather{
+    constructor(father_name , father_age , grandpa_name , grandfather_age){
+        super(grandpa_name , grandfather_age);
+        this.father_name = father_name;
+        this.father_age = father_age;
+    }
+    geta(){
+        // this.get();
+        console.log("Father Name = "+this.father_name);
+        console.log("Father Age = "+this.father_age);
+    }
+}
+
+class son extends father{
+    constructor(son_name, son_age , father_name , father_age ){
+        super(father_name , father_age );
+        this.son_name = son_name;
+        this.son_age = son_age;
+    }
+    getb(){
+        console.log("Son Name = "+this.son_name);
+        console.log("Son Age = "+this.son_age);
+    }
+}
+
+var person = new son( "Chocalate" , 10 );
+var person1 = new father("Candy",30 , "Sweet" , 50);
+person1.get();
+person1.geta();
+person.getb();
+
+</script>
+
+</body>
+</html>

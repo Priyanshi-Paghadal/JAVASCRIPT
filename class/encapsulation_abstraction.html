@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+    class bank{
+        constructor(b_name,b_holder,b_balance){
+            this.b_name = b_name;
+            this.b_holder = b_holder;
+            this.b_balance = b_balance;
+        }
+        get(){
+            console.log("Bank Name = "+this.b_name);
+            console.log("Bank Holder Name = "+this.b_holder);
+            console.log("Bank Balance = "+this.b_balance);
+        }
+        deposit(amount){
+            this.get();
+            this.b_balance += amount;
+        }
+    }
+
+    var obj = new bank("Bank Of Baroda","priyanshi",1900000);
+    obj.deposit(100000);
+    obj.get();
+</script>
+
+</body>
+</html>

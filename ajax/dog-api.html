@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        img{
+            object-fit: cover;
+        }
+        select,input{
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <select id="selectimg">
+        <option value="">--Select Catogory--</option>
+        <option value="shiba">Urvisha</option>
+        <option value="saluki">Isha</option>
+        <option value="redbone">Hetal</option>
+        <option value="lhasa">Tanvi</option>
+    </select>
+
+    <input type="button" value="Click" onclick="getimg()">
+    <div id="img"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        function getimg() {
+            var selectimg = document.getElementById("selectimg").value;
+            $.ajax({
+                url: 'https://dog.ceo/api/breed/' + selectimg + '/images',
+                type: "get",
+                success: function (data) {
+                    var img="";
+                    for(var i=0; i<data.message.length; i++){
+                        img += "<img src='"+data.message[i]+"' width='200px' height='200px'/>"
+                        document.getElementById('img').innerHTML = img;
+                    }
+                }
+
+            });
+        }
+    </script>
+
+</body>
+
+</html>

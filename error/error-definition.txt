@@ -1,0 +1,20 @@
+[1]. Internal Error -
+     In the JS engine, this error occurs most often when there is too much data and the stack exceeds its critical size. When there are too many recursion patterns, switch cases, etc., the JS engine gets overwhelmed.
+
+[2]. URI Error -
+     When the wrong character(s) are used in a URI function, the error is called.
+
+[3]. RangeError -
+     There is an error when a range of expected values is required.
+
+[4]. Evaluation Error -
+     Current JavaScript engines and EcmaScript specifications do not throw this error. However, it is still available for backward compatibility. The error is called when the eval() backward function is used, as shown in the following code block.
+
+[5]. Type Error -
+     An error occurs when a value is used outside the scope of its data type.
+
+[6]. Reference Error -
+     In a case where a variable reference can't be found or hasn't been declared, then a Reference error occurs.
+
+[7]. Syntax error -
+     The error occurs when you use a predefined syntax incorrectly.

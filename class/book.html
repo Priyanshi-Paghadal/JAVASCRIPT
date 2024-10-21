@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+    class book{
+        set(n,a,p,l){
+            this.name = n;
+            this.author = a;
+            this.price = p;
+            this.language = l;
+        }
+        get(){
+            console.log(this.name);
+            console.log(this.author);
+            console.log(this.price);
+            console.log(this.language);
+        }
+    }
+    var book1 = new book();
+    var book2 = new book();
+    var book3 = new book();
+    var book4 = new book();
+    var book5 = new book();
+    book1.set("Rich Dad Poor Dad","Robert Kiyosaki","250","Hindi");
+    
+    book2.set("Psycology Of Money","Morgan Housel","300","English");
+    book3.set("The Seceret","Rhonda Byrne","150","Gujarati");
+    book4.set("The Power","Josheph Murphy","400","English");
+    book5.set("Get epic Shit Done","Ankoor Warikoo","450","Hindi");
+    book1.get();
+    console.log("--------------------------------------");
+    book2.get();
+    console.log("--------------------------------------");
+    book3.get();
+    console.log("--------------------------------------");
+    book4.get();
+    console.log("--------------------------------------");
+    book5.get();
+</script>
+
+</body>
+</html>

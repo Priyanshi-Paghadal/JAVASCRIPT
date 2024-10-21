@@ -1,0 +1,25 @@
+<table border="1">
+    <tr>
+        <td><input type="text" id="s" placeholder="Starting point"/></td>
+    </tr>
+    <tr>
+        <td><input type="text" id="e" placeholder="Ending point"/></td>
+    </tr>
+    <tr>
+        <td><input type="button" value="click" onclick="getvalue()"/></td>
+    </tr>
+</table>
+<h1 id="ans"></h1>
+
+<script>
+    function getvalue(){
+        var start = parseInt(document.getElementById('s').value);
+        var end = parseInt(document.getElementById('e').value);
+        var record = " ";
+
+            for(var i = start; i <= end; i++){
+                record = record + i;
+                document.getElementById('ans').innerHTML =record;
+            }
+    }
+</script>
